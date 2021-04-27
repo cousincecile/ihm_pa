@@ -1,0 +1,52 @@
+CREATE DATABASE onlyfeed;
+
+CREATE TABLE opinion (
+    id int NOT NULL PRIMARY KEY,
+    id_user int,
+    date_pub timestamp,
+    comment text,
+    id_vg int,
+    rate float
+); 
+
+CREATE TABLE videogames (
+    id int NOT NULL PRIMARY KEY,
+    device varchar(255),
+    release_date timestamp,
+    name varchar(255),
+    link varchar(255),
+    rate float,
+    studio varchar(255),
+    pegi int
+); 
+
+CREATE TABLE steam_users (
+    id int NOT NULL PRIMARY KEY,
+    steam_id varchar(255),
+    username varchar(255),
+    category varchar(255),
+    age int
+); 
+
+CREATE TABLE chatbot_message_user (
+    id int NOT NULL PRIMARY KEY,
+    id_user int,
+    date_received timestamp,
+    content text
+);
+
+CREATE TABLE chatbot_message_chatbot (
+    id int NOT NULL PRIMARY KEY,
+    id_user int,
+    date_received timestamp,
+    content text
+);
+
+CREATE TABLE chatbot_user (
+    id int NOT NULL PRIMARY KEY,
+    username varchar(255),
+    email varchar(255),
+    last_connected timestamp,
+    age int,
+    category varchar(50)
+);

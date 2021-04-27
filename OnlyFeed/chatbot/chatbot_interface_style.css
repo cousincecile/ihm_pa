@@ -1,0 +1,53 @@
+.chatbox {
+  max-width: 200px;
+  max-height: 290px;
+  border: 5px solid blue;
+  width: 100%;
+  height: 100%;
+  display: block;
+  bottom: 20px;
+  right: 10px;
+  overflow: hidden;
+
+}
+
+.messages {
+	background-color: white;
+	border: 2px solid red;
+	margin: 5px;
+	display: block;
+	max-height: 230px;
+	overflow: scroll;
+	margin-bottom: 20px;
+}
+
+.vicbot {
+  	line-height: 14px;
+  	width: 100px;
+  	border-radius: 5px;
+  	padding: 10px;
+}
+
+.pic_bot{
+	width: 10px;
+	display: inline;
+}
+
+.reply {
+	margin: 5px;
+	position: absolute;
+	border: 2px solid green;
+	display: block;
+	bottom: 5px;
+
+}
+
+.reply input{
+	width: 65%;
+	display: inline;
+}
+
+.reply button{
+	width: 25%;
+	display: inline;
+}

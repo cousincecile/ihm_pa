@@ -1,0 +1,19 @@
+{
+	"manifest_version": 3,
+	"name": "Onlyfeed",
+	"version": "1.0",
+	"icons": {
+		"128": "icon128.png",
+		"48": "icon48.png",
+		"16": "icon16.png"
+	},
+	
+	// "background.service_worker":{
+	// 	"service_worker": ["background.js"]
+	// },
+
+	"action": {
+    "default_popup": "chatbot_interface.html"
+  }
+
+}

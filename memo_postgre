@@ -1,0 +1,13 @@
+se co à psql:
+sudo -i -u postgres
+psql
+
+se mettre dans la bdd:
+\c onlyfeed;
+INSERT INTO opinion(id, id_user)
+VALUES (1, 2);
+
+SELECT * FROM opinion;
+
+DROP DATABASE onlyfeed;
+
