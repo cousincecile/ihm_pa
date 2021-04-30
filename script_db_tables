@@ -43,7 +43,7 @@ CREATE TABLE chatbot_message_chatbot (
 );
 
 CREATE TABLE chatbot_user (
-    id int NOT NULL PRIMARY KEY,
+    id serial NOT NULL PRIMARY KEY,
     username varchar(255),
     email varchar(255),
     last_connected timestamp,

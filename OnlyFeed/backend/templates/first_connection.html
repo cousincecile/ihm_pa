@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+
+<body>
+	<form method="POST" action="{{ url_for("add_data")}}" method="post">
+		<label>Quel est ton nom?</label>
+		<input type="text" name="fusername" class="first_connection">
+		<label>Quel est ton adresse email?</label>
+		<input type="text" name="femail" class="first_connection">
+		<label>Quel est ton age?</label>
+		<input type="text" name="fage" class="first_connection">
+		<input type="submit" value="Submit">
+	</form>
+</body>
+</html>

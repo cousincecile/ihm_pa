@@ -33,3 +33,25 @@ class Opinion(Base):
 		}
 
 		return json
+
+class Chatbot_User(Base):
+	__tablename__ = 'chatbot_user'
+
+	id = db.Column(db.Integer, primary_key=True)
+	username = db.Column(db.Text)
+	email = db.Column(db.Text)
+	last_connected = db.Column(db.DateTime)
+	age = db.Column(db.Integer)
+	category = db.Column(db.Text)
+
+	def toJSON(self):       
+		json = {
+			"id":self.id,
+			"username":self.username,
+			"email":self.email,
+			"last_connected":self.last_connected,
+			"age":self.age,
+			"category":self.category     
+		}
+
+		return json

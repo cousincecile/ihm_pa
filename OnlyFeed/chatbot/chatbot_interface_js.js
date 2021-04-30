@@ -7,3 +7,7 @@ function display_message() {
 	get_message.value = "";
 	console.log(get_message);
 }
+
+function get_input(){
+	
+}
