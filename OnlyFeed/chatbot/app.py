@@ -39,6 +39,9 @@ def setcookie():
    if request.method == 'POST':
        email = request.form['email']
        username = request.form['username']
+       date_crea = datetime.datetime.now()
+
+       #enregistrer user
        
        resp = make_response(render_template('index.html'))
        resp.set_cookie('email', email)
