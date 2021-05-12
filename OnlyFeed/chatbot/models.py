@@ -55,3 +55,21 @@ class Chatbot_User(Base):
 		}
 
 		return json
+
+class Chatbot_message_user(Base):
+	__tablename__ = 'chatbot_message_user'
+
+	id = db.Column(db.Integer, primary_key=True)
+	id_user = db.Column(db.Text)
+	date_received = db.Column(db.DateTime)
+	content = db.Column(db.Text)
+
+	def toJSON(self):       
+		json = {
+			"id":self.id,
+			"id_user":self.id_user,
+			"date_received":self.date_received,
+			"content":self.content    
+		}
+
+		return json

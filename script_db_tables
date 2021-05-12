@@ -29,7 +29,7 @@ CREATE TABLE steam_users (
 ); 
 
 CREATE TABLE chatbot_message_user (
-    id int NOT NULL PRIMARY KEY,
+    id serial NOT NULL PRIMARY KEY,
     id_user int,
     date_received timestamp,
     content text
