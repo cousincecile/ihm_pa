@@ -1,3 +1,5 @@
+var url = 'http://localhost:5001/'
+
 document.addEventListener('DOMContentLoaded', function () {
 	document.getElementById("reload_message").addEventListener("click", add_message_user);
 });
@@ -11,21 +13,27 @@ input.addEventListener('keydown', function (e) {
     }
 });
 
+var new_user_button = document.getElementById('new_user_button');
+new_user_button.addEventListener("click", add_user)
+
 function get_cookies(){
-	$.ajax({
-	url: '/get_cookies',
-    type: 'POST',
-    success: function (data) {
-    	if(!data.message){
-    		display_new_form()
-    	}else{
-    		display_all_messages(data.message)
-    	}
-        
-    },
-    error: function (data) {
-        console.log("erreur")
-    }});
+	chrome.cookies.get({ url: url, name: 'userID' },
+		function (cookie) {
+			if (cookie) {
+		      display_all_messages(cookie)
+		    }
+		    else {
+		      display_new_form()
+		    }
+		});
+}
+
+function set_cookies(data){
+	chrome.cookies.set({ url: url, name: "email", value: String(data.email) });
+	chrome.cookies.set({ url: url, name: "username", value: String(data.username) });
+	chrome.cookies.set({ url: url, name: "userID", value: String(data.id) });
+
+	document.location.reload();
 }
 
 function display_new_form(){
@@ -52,11 +60,33 @@ function display_message(message, type) {
 	
 }
 
+function add_user(){
+	var email = document.getElementById("email").value
+	var username = document.getElementById("username").value
+	var age = document.getElementById("age").value
+
+	$.ajax({
+		url: url + 'add_user',
+	    type: 'POST',
+	    dataType: 'json',
+	    data: { 
+	    		email: email,
+	    		username : username,
+	    		age : age
+	    	  },
+	    success: function (data) {
+	        set_cookies(data.message)
+	    },
+	    error: function (data) {
+	        console.log(data.message)
+	    }});
+}
+
 function add_message_user(){
 	var message = document.getElementById("send_message").value;
 	if(message != ""){
 		$.ajax({
-		url: '/add_user_message',
+		url: url + 'add_user_message',
 	    type: 'POST',
 	    dataType: 'json',
 	    data: { data: message},
@@ -69,6 +99,6 @@ function add_message_user(){
 	}
 }
 
-function display_all_messages(email){
-	console.log(email)
+function display_all_messages(userID){
+	console.log(userID.value)
 }

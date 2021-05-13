@@ -11,7 +11,6 @@ db_session = scoped_session(sessionmaker(autocommit=False,
 Base = declarative_base()
 Base.query = db_session.query_property()
 
-# define your models classes hereafter
 class Opinion(Base):
 	__tablename__ = 'opinion'
 
