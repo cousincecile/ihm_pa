@@ -7,13 +7,20 @@
 		"48": "icon48.png",
 		"16": "icon16.png"
 	},
+
+	"permissions": [
+		"http://localhost:5000/*",
+		"cookies"
+	],
 	
 	// "background.service_worker":{
 	// 	"service_worker": ["background.js"]
 	// },
 
 	"action": {
-    "default_popup": "chatbot_interface.html"
+    "default_popup": "index.html"
+
+
   }
 
 }

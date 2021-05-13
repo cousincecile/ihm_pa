@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Title of the document</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,300' rel='stylesheet' type='text/css'>
+		<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css'>
+		<link rel='stylesheet prefetch' href= 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css'>
+	</head>
+
+	<body>
+		<div id="frame">
+			<div class="content">
+				<div class="contact-profile">
+					<!--<img src="icon128.png" alt="" /> -->
+					<p>Onlyfeed</p>
+					<div class="social-media">
+						<i class="fa fa-cog" aria-hidden="true"></i>
+					</div>
+				</div>
+				<div class="messages">
+					<div id="new_form" class="first_connection_form">
+
+						<form id="new_user_form" action = "/set_cookies" method = "POST" class="custom_form">
+						  <h1 class="title_form">Welcome to Onlyfeed</h1>
+						  <div class="form-group">
+						    <label>Email</label>
+						    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
+						  </div>
+						  <div class="form-group">
+						    <label for="exampleInputPassword1">Username</label>
+						    <input type="text" class="form-control" name="username" placeholder="Username" required>
+						  </div>
+						  <button id='new_user_button' class="btn">Envoyer</button>
+						</form>
+					</div>
+					<ul id="messages">
+					</ul>
+				</div>
+				<div class="message-input">
+					<div class="wrap">
+					<input type="text" id="send_message" placeholder="Write your message..." />
+					<i class="fa fa-paperclip attachment" aria-hidden="true"></i>
+					<button class="submit" id="reload_message"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="js/jquery.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/main.js"></script>
+		
+</html>
