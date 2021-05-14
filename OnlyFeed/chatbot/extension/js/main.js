@@ -58,6 +58,7 @@ function display_message(message, type) {
 		entry.innerHTML+= '<p>'+message+'</p>';
 		get_messages.appendChild(entry);
 		document.getElementById("send_message").value = "";
+		scroll_down()
 	}
 	
 }
@@ -110,6 +111,11 @@ function welcome_message(){
 	message = "Bip Boup, que puis-je faire pour toi aujourd'hui ?"
 	type = "chatbot"
 	display_message(message, type)
+}
+
+function scroll_down(){
+	var chat_div = document.getElementById("chat_window")
+	chat_div.scrollTop = chat_div.scrollHeight
 }
 
 function display_all_messages(){
