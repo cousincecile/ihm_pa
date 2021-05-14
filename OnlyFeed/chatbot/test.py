@@ -28,4 +28,14 @@ def get_user(username):
 	added_user = db.session.query(Chatbot_User).filter_by(username=username).first()
 	print(added_user.toJSON())
 
-get_user("test")
+def get_user_messages(userID):
+	messages = db.session.query(Chatbot_message_user).filter_by(id_user=userID).order_by(Chatbot_message_user.date_received.asc())
+	messages_list = []
+	for message in messages:
+		message = message.toJSON()
+		message["type"]="user"
+		messages_list.append(message)
+
+	print(messages_list)
+
+get_user_messages(1)

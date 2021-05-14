@@ -1,4 +1,5 @@
 var url = 'http://localhost:5001/'
+var userID
 
 document.addEventListener('DOMContentLoaded', function () {
 	document.getElementById("reload_message").addEventListener("click", add_message_user);
@@ -20,6 +21,7 @@ function get_cookies(){
 	chrome.cookies.get({ url: url, name: 'userID' },
 		function (cookie) {
 			if (cookie) {
+			  userID = cookie.value
 		      display_all_messages(cookie)
 		    }
 		    else {
@@ -84,12 +86,17 @@ function add_user(){
 
 function add_message_user(){
 	var message = document.getElementById("send_message").value;
+	console.log(userID)
+
 	if(message != ""){
 		$.ajax({
 		url: url + 'add_user_message',
 	    type: 'POST',
 	    dataType: 'json',
-	    data: { data: message},
+	    data: { 
+	    		message: message,
+	    		userID : userID
+	    	  },
 	    success: function (data) {
 	        display_message(message, 'user')
 	    },
@@ -99,6 +106,30 @@ function add_message_user(){
 	}
 }
 
-function display_all_messages(userID){
-	console.log(userID.value)
+function welcome_message(){
+	message = "Bip Boup, que puis-je faire pour toi aujourd'hui ?"
+	type = "chatbot"
+	display_message(message, type)
 }
+
+function display_all_messages(){
+
+	$.ajax({
+		url: url + 'get_all_messages',
+	    type: 'POST',
+	    dataType: 'json',
+	    data: {
+	    		userID : userID
+	    	  },
+	    success: function (data) {
+	    	messages = data.message
+	    	for (var i = 0; i < messages.length; i++){
+	    		display_message(messages[i].content, messages[i].type)
+	    	}
+	    	welcome_message()
+	    },
+	    error: function (data) {
+	        console.log(data.message)
+	    }});
+}
+
