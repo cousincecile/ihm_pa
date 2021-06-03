@@ -28,3 +28,9 @@ stories:
   - action: utter_did_that_help
   - intent: deny
   - action: utter_goodbye
+
+- story: get_video_game_price
+  steps:
+  - intent: get_price
+  - action: Get_Video_Game_Price
+  - action: utter_did_that_help

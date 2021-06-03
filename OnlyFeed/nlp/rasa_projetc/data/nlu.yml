@@ -1,5 +1,4 @@
 version: "2.0"
-
 nlu:
 - intent: greet
   examples: |
@@ -16,7 +15,6 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
-
 - intent: goodbye
   examples: |
     - good afternoon
@@ -30,7 +28,6 @@ nlu:
     - see you around
     - bye bye
     - see you later
-
 - intent: affirm
   examples: |
     - yes
@@ -39,7 +36,6 @@ nlu:
     - of course
     - that sounds good
     - correct
-
 - intent: deny
   examples: |
     - no
@@ -49,7 +45,6 @@ nlu:
     - don't like that
     - no way
     - not really
-
 - intent: mood_great
   examples: |
     - perfect
@@ -66,20 +61,29 @@ nlu:
     - so so perfect
     - so good
     - so perfect
-
 - intent: get_price
   examples: |
-    - Quel est le prix de Assasin's Creed
-    - Quel est le prix de Just Cause
-    - Quel est le prix de Just Cause 2
-    - Quel est le prix de Just Cause 3
-    - Quel est le prix de Among us ?
-    - Quel est le prix de Batman Arkham City ?
-    - Quel est le prix de Batman Arkham Origins
-    - Quel est le prix de Battlerite ?
-   
-
-
+    - Quel est le prix de [Assasin's Creed](video_game)
+    - Quel est le prix de [Just Cause](video_game)
+    - Quel est le prix de [Just Cause 2](video_game)
+    - Quel est le prix de [Just Cause 3](video_game)
+    - Quel est le prix de [Among us] (video_game) ?
+    - Quel est le prix de [Batman Arkham City](video_game) ?
+    - Quel est le prix de [Batman Arkham Origins](video_game)
+    - Quel est le prix de [Battlerite](video_game) ?
+    - C'est combien [Skyrim](video_game) ?
+    - Ca coute combien [Skyrim](video_game) ?
+    - Combien coûte [Skyrim](video_game) ?
+    - C'est combien [Genshin Impact](video_game) ?
+    - Quel est le prix de Genshin Impact ?
+    - Quel est le prix de FallGuys ?
+    - Quel est le prix de [Genshin Impact](video_game)
+    - Quel est le prix de Honkai ?
+    - Quel est le prix de [Batman](video_game) ?
+    - Quel est le prix de [Black](video_game) ?
+    - Combien coute [Baman](video_game) ?
+    - [Batman](video_game) coute combien ?
+    - Combien coute [Fifa](video_game) ?
 - intent: get_rate
   examples: |
     - Quel est la note de ce jeu?
@@ -89,13 +93,11 @@ nlu:
     - C'est quoi la note de ce jeu
     - note
     - notation
-
-
 - intent: get_genre
   examples: |
-    - fps 
+    - fps
     - tps
-    - moba 
+    - moba
     - action
     - horreur
     - monde ouvert
@@ -104,7 +106,6 @@ nlu:
     - Ce jeu est il un fps?
     - c'est un moba?
     - on peut jouer à plusieurs?
-
 - intent: get_graphic
   examples: |
     - qualité
@@ -112,7 +113,6 @@ nlu:
     - beau
     - Ce jeu est il beau
     - beau paysage
-
 - intent: get_gameplay
   examples: |
     - Ce jeu est-il facile à jouer ?
@@ -127,8 +127,6 @@ nlu:
     - Les contrôles sont-ils difficiles ?
     - Le gameplay est-il bien ?
     - Le gameplay est-il mauvais ?
-
-
 - intent: get_immersion
   examples: |
     - Le jeu est-il immersif ?
@@ -140,8 +138,7 @@ nlu:
     - L'histoire est-elle passionnante ?
     - Les graphiques sont-ils bien faits ?
     - Vais-je passer peu de temps sur ce jeu ?
-    - Vais-je passer beaucoup de temps sur ce jeu 
-
+    - Vais-je passer beaucoup de temps sur ce jeu
 - intent: get_review
   examples: |
     - Que penses-tu de ce jeu ?
@@ -156,4 +153,4 @@ nlu:
     - Ce jeu est à chier ?
     - Ce jeu en vaux la peine ?
     - Ce jeu est médiocre ?
-    - Ce jeu est nul ?                 
+    - Ce jeu est nul ?
