@@ -48,10 +48,10 @@ function display_message(message, type) {
 
 	if(message != ''){
 		var entry = document.createElement('li');
-		if(type == 'user'){
+		if(type == 1){
 			entry.classList.add("sent");
 		}
-		else if(type == 'chatbot'){
+		else if(type == 0){
 			entry.classList.add("replies");
 		}
 		entry.innerHTML+='<img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />';
@@ -87,7 +87,6 @@ function add_user(){
 
 function add_message_user(){
 	var message = document.getElementById("send_message").value;
-	console.log(userID)
 
 	if(message != ""){
 		$.ajax({
@@ -96,10 +95,11 @@ function add_message_user(){
 	    dataType: 'json',
 	    data: { 
 	    		message: message,
-	    		userID : userID
+	    		userID : userID,
+	    		type : 1
 	    	  },
 	    success: function (data) {
-	        display_message(message, 'user')
+	        display_message(message, 1)
 	    },
 	    error: function (data) {
 	        console.log(data.message)
@@ -109,7 +109,7 @@ function add_message_user(){
 
 function welcome_message(){
 	message = "Bip Boup, que puis-je faire pour toi aujourd'hui ?"
-	type = "chatbot"
+	type = 0
 	display_message(message, type)
 }
 

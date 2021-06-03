@@ -24,6 +24,14 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 db = SQLAlchemy(app)
 
+def add_user():
+	email = "test"
+	username = "test"
+	age = 20
+	new_user = Chatbot_User(username = username, email = email, age= age)
+	db.session.add(new_user)
+	db.session.commit()
+
 def get_user(username):
 	added_user = db.session.query(Chatbot_User).filter_by(username=username).first()
 	print(added_user.toJSON())
@@ -38,4 +46,5 @@ def get_user_messages(userID):
 
 	print(messages_list)
 
-get_user_messages(1)
+#add_user()
+get_user("test")
