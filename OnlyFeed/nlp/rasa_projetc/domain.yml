@@ -3,8 +3,8 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- get_price
 - get_rate
+- get_price
 - get_genre
 - get_graphic
 - get_gameplay
@@ -19,9 +19,13 @@ intents:
 - bot_challenge
 entities:
 - video_game
+slots:
+  video_game:
+    type: text
+    influence_conversation: false
 responses:
   utter_give_price:
-  - text: "Le prix est : {price}"
+  - text: 'Le prix de {video_game} est : {price} €'
   utter_greet:
   - text: Hey! How are you?
   utter_cheer_up:
@@ -37,8 +41,5 @@ responses:
   - text: I am a bot, powered by Rasa.
 actions:
 - Get_Video_Game_Price
+- Get_Video_Game_Rate
 - utter_happy
-slots:
-  video_game:
-    type: text
-    influence_conversation : false

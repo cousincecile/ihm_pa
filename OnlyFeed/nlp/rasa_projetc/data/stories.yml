@@ -34,3 +34,17 @@ stories:
   - intent: get_price
   - action: Get_Video_Game_Price
   - action: utter_did_that_help
+
+- story: get_video_game_rate
+  steps:
+  - intent: get_rate
+  - action: Get_Video_Game_Rate
+
+- story: interactive_story_1
+  steps:
+  - intent: get_rate
+    entities:
+    - video_game: Skyrim
+  - slot_was_set:
+    - video_game: Skyrim
+  - action: Get_Video_Game_Rate

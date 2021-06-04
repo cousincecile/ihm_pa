@@ -93,6 +93,7 @@ nlu:
     - C'est quoi la note de ce jeu
     - note
     - notation
+    - Quelle est la note de [Skyrim](video_game) ?
 - intent: get_genre
   examples: |
     - fps
