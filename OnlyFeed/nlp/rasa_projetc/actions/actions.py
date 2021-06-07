@@ -25,7 +25,6 @@ class Get_Video_Game_Price(Action):
 
         video_game = tracker.get_slot("video_game")
         price = fetch_price(video_game)
-        print(price)
         dispatcher.utter_template("utter_give_price", tracker, price=price, video_game=video_game)
 
         return []
@@ -39,9 +38,9 @@ class Get_Video_Game_Rate(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        video_game = tracker.get_slot("video_game")
-        rate = fetch_rate(video_game)
-        dispatcher.utter_template("utter_give_rate", tracker, price=price, video_game=video_game)
+        # video_game = tracker.get_slot("video_game")
+        # rate = fetch_rate(video_game)
+        # dispatcher.utter_template("utter_give_rate", tracker, price=price, video_game=video_game)
 
         return []
 
@@ -53,11 +52,21 @@ def fetch_price(video_game):
     result = cur.fetchall()
     return result[0][0]
 
-def fetch_rate(video_game):
+# def fetch_rate(video_game):
 
+#     # cur = db.cursor()
+#     # cur.execute("SELECT rate FROM of_game_analysis WHERE id_game = (SELECT id FROM steam_video_games WHERE name LIKE '%" + video_game +"%' LIMIT 1)")
+#     # result = cur.fetchall()
+#     return "result"
+
+def get_games():
     cur = db.cursor()
-    cur.execute("SELECT rate FROM of_game_analysis WHERE id_game = (SELECT id FROM steam_video_games WHERE name LIKE '%" + video_game +"%' LIMIT 1)")
-    result = cur.fetchall()
-    return result
+    cur.execute("SELECT name FROM steam_video_games")
+    results = cur.fetchall()
 
-print(fetch_rate("Skyrim"))
+    with open("games.txt", "a+") as f:
+        for result in results:
+            game = result[0].replace("'", " ")
+            f.write("- \'" + str(game) + "\'\n")
+
+get_games()
