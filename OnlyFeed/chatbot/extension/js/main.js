@@ -1,8 +1,9 @@
 var url = 'http://localhost:5001/'
+var url_rasa = 'http://localhost:5005/webhooks/rest/webhook'
 var userID
 
 document.addEventListener('DOMContentLoaded', function () {
-	document.getElementById("reload_message").addEventListener("click", add_message_user);
+	document.getElementById("reload_message").addEventListener("click", add_message("from_user", 1));
 });
 
 window.addEventListener("load", get_cookies)
@@ -10,7 +11,7 @@ window.addEventListener("load", get_cookies)
 var input = document.getElementById('send_message');
 input.addEventListener('keydown', function (e) {
     if(e.keyCode==13) {
-     add_message_user();
+     add_message("from_user", 1);
     }
 });
 
@@ -85,8 +86,11 @@ function add_user(){
 	    }});
 }
 
-function add_message_user(){
-	var message = document.getElementById("send_message").value;
+function add_message(message, type){
+
+	if(message == "from_user"){
+		message = document.getElementById("send_message").value;
+	}
 
 	if(message != ""){
 		$.ajax({
@@ -96,21 +100,18 @@ function add_message_user(){
 	    data: { 
 	    		message: message,
 	    		userID : userID,
-	    		type : 1
+	    		type : type
 	    	  },
 	    success: function (data) {
-	        display_message(message, 1)
+	    	if(type == 1){
+	    		query_rasa(message)
+	    	}
+	        display_message(message, type)
 	    },
 	    error: function (data) {
 	        console.log(data.message)
 	    }});
 	}
-}
-
-function welcome_message(){
-	message = "Bip Boup, que puis-je faire pour toi aujourd'hui ?"
-	type = 0
-	display_message(message, type)
 }
 
 function scroll_down(){
@@ -137,5 +138,29 @@ function display_all_messages(){
 	    error: function (data) {
 	        console.log(data.message)
 	    }});
+}
+
+function query_rasa(message, useriD){
+
+	console.log(message)
+
+	$.ajax({
+		url: url_rasa,
+	    type: 'POST',
+	    dataType: 'json',
+	    data:JSON.stringify({
+	    		sender: userID,
+	    		message: message
+	    	  }),
+	    success: function (data) {
+	    	for (var i = 0; i < data.length; i++){
+	    		console.log(data[i].text)
+	    		add_message(data[i].text, 0)
+	    	}
+	    },
+	    error: function (data) {
+	        console.log(data)
+	    }});
+
 }
 
