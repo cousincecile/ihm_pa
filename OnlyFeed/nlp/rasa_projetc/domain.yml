@@ -27,18 +27,18 @@ responses:
   utter_give_price:
   - text: 'Le prix de {video_game} est : {price} €'
   utter_greet:
-  - text: Hey! How are you?
+  - text: Bonjour, comment vas-tu?
   utter_cheer_up:
-  - text: 'Here is something to cheer you up:'
+  - text: 'Tiens:'
     image: https://i.imgur.com/nGF1K8f.jpg
   utter_did_that_help:
-  - text: Did that help you?
+  - text: Est ce que ca a été utile??
   utter_happy:
-  - text: Great, carry on!
+  - text: Génial!
   utter_goodbye:
-  - text: Bye
+  - text: Aurevoir!
   utter_iamabot:
-  - text: I am a bot, powered by Rasa.
+  - text: Je ne suis qu'un simple bot.
 actions:
 - Get_Video_Game_Price
 - Get_Video_Game_Rate
