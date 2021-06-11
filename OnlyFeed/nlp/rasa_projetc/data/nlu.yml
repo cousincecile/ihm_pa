@@ -1,6 +1,5 @@
 version: "2.0"
 nlu:
-
 - intent: greet
   examples: |
     - hey
@@ -85,9 +84,80 @@ nlu:
     - Combien coute [Baman](video_game) ?
     - [Batman](video_game) coute combien ?
     - Combien coute [Fifa](video_game) ?
-
-- lookup : video_game
-  examples : |
+    - Quel est le prix de [Jacob Jones and the Bigfoot Mystery  Episode 1](video_game)[1](video_game)
+- intent: get_rate
+  examples: |
+    - Quel est la note de ce jeu?
+    - Le jeu est bien noté
+    - Le jeu est il aimé?
+    - Le jeu le mieux note
+    - C'est quoi la note de ce jeu
+    - note
+    - notation
+    - Quelle est la note de [Skyrim](video_game) ?
+- intent: get_genre
+  examples: |
+    - fps
+    - tps
+    - moba
+    - action
+    - horreur
+    - monde ouvert
+    - solo
+    - multijoueur
+    - Ce jeu est il un fps?
+    - c'est un moba?
+    - on peut jouer à plusieurs?
+- intent: get_graphic
+  examples: |
+    - qualité
+    - qualite
+    - beau
+    - Ce jeu est il beau
+    - beau paysage
+- intent: get_gameplay
+  examples: |
+    - Ce jeu est-il facile à jouer ?
+    - Ce jeu est-il difficile à jouer ?
+    - Est-ce que ce jeu est dur ?
+    - Est-ce que ce jeu est simple ?
+    - Est-il facile de jouer à ce jeu ?
+    - est-il difficile de jouer à ce jeu ?
+    - Les contrôle sont-ils simples ?
+    - Les contrôles sont-ils durs ?
+    - Les contrôles sont-ils faciles ?
+    - Les contrôles sont-ils difficiles ?
+    - Le gameplay est-il bien ?
+    - Le gameplay est-il mauvais ?
+- intent: get_immersion
+  examples: |
+    - Le jeu est-il immersif ?
+    - Le jeu est-il passionnant ?
+    - Le jeu est-il bien fait ?
+    - Peut-on entrer en immersion dans ce jeu ?
+    - Les graphiques sont-ils beaux ?
+    - L'histoire est-elle belle ?
+    - L'histoire est-elle passionnante ?
+    - Les graphiques sont-ils bien faits ?
+    - Vais-je passer peu de temps sur ce jeu ?
+    - Vais-je passer beaucoup de temps sur ce jeu
+- intent: get_review
+  examples: |
+    - Que penses-tu de ce jeu ?
+    - Ce jeu est-il bien ?
+    - Ce jeu est-il mauvais ?
+    - Tu aimes ce jeu ?
+    - Tu n'aimes pas ce jeu ?
+    - T'as kiffé ce jeu ?
+    - T'as détesté ce jeu ?
+    - Qu'est-ce que tu penses de ce jeu ?
+    - Ce jeu est formidable ?
+    - Ce jeu est à chier ?
+    - Ce jeu en vaux la peine ?
+    - Ce jeu est médiocre ?
+    - Ce jeu est nul ?
+- lookup: video_game
+  examples: |
     - Crix
     - Injoku Furin - Deluxe Pack
     - Portal
@@ -983,7 +1053,7 @@ nlu:
     - Journey Of Life
     - Rising Storm 2 Vietnam - Uncle Ho s Heroes Cosmetic DLC
     - Rising Storm 2 Vietnam - Born in the USA Cosmetic DLC
-    - The Movies Stunts and Effects 
+    - The Movies Stunts and Effects
     - Kalen Chock Presents Advanced Thumbnails Lecture with No Music
     - Rising Storm 2 Vietnam - Man Down Under Cosmetic DLC
     - The World is Your Weapon
@@ -1654,7 +1724,7 @@ nlu:
     - The Phantom Fellows Demo
     - Halo Spartan Assault
     - Bloom Memories Demo
-    - Lost™ Via Domus 
+    - Lost™ Via Domus
     - Tom Clancy s Ghost Recon®
     - Pathfinder Adventures - Rise of the Goblins
     - Grisaia Phantom Trigger Character Song (Tohka)
@@ -2386,27 +2456,27 @@ nlu:
     - Speed Kills
     - AlienSurvival
     - Zaccaria Pinball - Universe Deluxe Pinball Table
-    - F1 2019 Car Livery  NOVUS - Datastream 
+    - F1 2019 Car Livery  NOVUS - Datastream
     - Fantasy Grounds - Mini-Dungeon #004 Summoner s Remorse (5E)
-    - F1 2019 Car Livery  VENUS - Static Shock 
-    - F1 2019 Car Livery  CNH2N+2ENERGY - Tiger 
+    - F1 2019 Car Livery  VENUS - Static Shock
+    - F1 2019 Car Livery  CNH2N+2ENERGY - Tiger
     - Unity of Command II
-    - F1 2019 Car Livery  AVAX - Pinstripe 
-    - F1 2019 Car Livery  VENUS - Ping 
+    - F1 2019 Car Livery  AVAX - Pinstripe
+    - F1 2019 Car Livery  VENUS - Ping
     - Tribulation
     - Halloween Mysteries
     - Pixel Puzzles Japan
     - Vandals
-    - F1 2019 Helmet  Swipes 
-    - F1 2019 Helmet  Punch It 
-    - F1 2019 Helmet  Lightning 
+    - F1 2019 Helmet  Swipes
+    - F1 2019 Helmet  Punch It
+    - F1 2019 Helmet  Lightning
     - Acolyte Prologue
-    - F1 2019 Suit  Blue and Black 
+    - F1 2019 Suit  Blue and Black
     - BEKKOUAME
     - Tactical Suppression
     - Project Root
-    - F1 2019 Gloves  Apex 
-    - F1 2019 Gloves  Navigator 
+    - F1 2019 Gloves  Apex
+    - F1 2019 Gloves  Navigator
     - Pair Matching Puzzle Connect - Expansion Pack 8
     - Bear With Me - Collector s Edition Upgrade
     - Simmetri
@@ -2644,7 +2714,7 @@ nlu:
     - Life of Fly 2
     - Flock of Dogs
     - After Life - Story of a Father
-    - Goto Family s-   The Island Murder Case  
+    - Goto Family s-   The Island Murder Case
     - MechRunner
     - Torimodosu
     - Hearts of Iron III Soviet Infantry Pack DLC
@@ -3851,7 +3921,7 @@ nlu:
     - Fallen Empires
     - Mondrian - Plastic Reality
     - Flyhunter Origins
-    - Earthworm Jim 
+    - Earthworm Jim
     - Duncan and the Wisp
     - Pure Chess Grandmaster Edition
     - Earthworm Jim 2
@@ -4080,16 +4150,16 @@ nlu:
     - Dungeons of the dead
     - AI War The Zenith Remnant
     - Energy Hunter Boy
-    - Gotham City Impostors Free to Play Luchador Costume 
+    - Gotham City Impostors Free to Play Luchador Costume
     - AI War Children of Neinzul
     - AI War Light of the Spire
     - AI War Ancient Shadows
     - Soldier Warfare
     - Dota 2 Player Profiles Team Secret - S4
     - AI War Fleet Command Demo
-    - Gotham City Impostors Free to Play Ninja Costume 
+    - Gotham City Impostors Free to Play Ninja Costume
     - Scar of the Doll 人形の傷跡
-    - Gotham City Impostors Free to Play Pirate Costume 
+    - Gotham City Impostors Free to Play Pirate Costume
     - KAPIA
     - Tidalis
     - Soda Dungeon
@@ -4926,7 +4996,7 @@ nlu:
     - Copycat
     - AI 2061
     - Xenon Valkyrie
-    - Magic 2012 Foil Conversion “Beknighted” 
+    - Magic 2012 Foil Conversion “Beknighted”
     - Tora Tora!
     - Imperium Galactica
     - 3000th Duel
@@ -7029,7 +7099,7 @@ nlu:
     - Fantasy Grounds - Starfinder RPG - Dead Suns AP 6 Empire of Bones (SFRPG)
     - Drums of War
     - Saviors OST
-    - Soul Dossier 
+    - Soul Dossier
     - The Filmmaker - A Text Adventure
     - Into Blue Valley
     - Fantasy Grounds - Hellfrost Rassilon Expansion II (Savage Worlds)
@@ -7740,7 +7810,7 @@ nlu:
     - Hydrophobia Prophecy Trailer
     - Hector Badge of Carnage Trailer
     - The First Templar Gameplay Trailer PEGI
-    - Inside a Star-Filled Sky Trailer 
+    - Inside a Star-Filled Sky Trailer
     - Renzo Racer
     - Dinner Date Trailer
     - Uberlaufer
@@ -7835,7 +7905,7 @@ nlu:
     - Gorgos Embryo - Awesomenauts Droppod
     - Plague Needle - Awesomenauts Droppod
     - Iron Front Liberation 1944 Infantry Trailer EN
-    - Metro Last Light Enter the Metro Teaser 
+    - Metro Last Light Enter the Metro Teaser
     - StarLightRiders HyperJump
     - SixGenerals-Elite(六小将精英包)
     - The Binding of Isaac Wrath of the Lamb Trailer
@@ -7888,7 +7958,7 @@ nlu:
     - Dark Eye Trailer PEGI
     - The Dark Eye Story ENG
     - 12 bananas
-    - Groovin  - Perfect Music For Some Knightin 
+    - Groovin  - Perfect Music For Some Knightin
     - VR Batting
     - The MoneyMakers Rallye
     - Nephise
@@ -8982,30 +9052,30 @@ nlu:
     - Egony
     - Nova Odessa
     - Assetto Corsa - Ready To Race Pack
-    - F1 2019 Badge  Big Cat 
-    - F1 2019 Badge  Tool Master 
-    - F1 2019 Badge  Off Earth 
-    - F1 2019 Badge  Metal 
-    - F1 2019 Car Livery  Monnaie - Fête 
-    - F1 2019 Car Livery  NOVUS - Disruption 
+    - F1 2019 Badge  Big Cat
+    - F1 2019 Badge  Tool Master
+    - F1 2019 Badge  Off Earth
+    - F1 2019 Badge  Metal
+    - F1 2019 Car Livery  Monnaie - Fête
+    - F1 2019 Car Livery  NOVUS - Disruption
     - ibb & obb
-    - F1 2019 Car Livery  VENUS - Luxury 
-    - F1 2019 Car Livery  OVOLO - Blur 
-    - F1 2019 Helmet  Spikes 
-    - F1 2019 Helmet  Striker 
-    - F1 2019 Suit  Molten Iron 
-    - F1 2019 Suit  Digital Camo 
-    - F1 2019 Suit  Monochrome 
-    - F1 2019 Suit  Stunning Violet 
+    - F1 2019 Car Livery  VENUS - Luxury
+    - F1 2019 Car Livery  OVOLO - Blur
+    - F1 2019 Helmet  Spikes
+    - F1 2019 Helmet  Striker
+    - F1 2019 Suit  Molten Iron
+    - F1 2019 Suit  Digital Camo
+    - F1 2019 Suit  Monochrome
+    - F1 2019 Suit  Stunning Violet
     - Crawl OST
     - What The Fork Demo
     - Steel Rats™
-    - F1 2019 Suit  Sci-Fi 
-    - F1 2019 Gloves  Molten Iron 
-    - F1 2019 Gloves  Digital Camo 
-    - F1 2019 Gloves  Monochrome 
-    - F1 2019 Gloves  Stunning Violet 
-    - F1 2019 Gloves  Sci-Fi 
+    - F1 2019 Suit  Sci-Fi
+    - F1 2019 Gloves  Molten Iron
+    - F1 2019 Gloves  Digital Camo
+    - F1 2019 Gloves  Monochrome
+    - F1 2019 Gloves  Stunning Violet
+    - F1 2019 Gloves  Sci-Fi
     - Wiggly Boy
     - Immortal Redneck - Original Soundtrack
     - Immortal Redneck - Digital Artbook
@@ -10190,7 +10260,7 @@ nlu:
     - Fantasy Grounds - Undead 1 (Token Pack)
     - The Witcher 3 Wild Hunt - Beard and Hairstyle Set
     - The Witcher 3 Wild Hunt - Alternative Look for Yennefer
-    - The Witcher 3 Wild Hunt - New Quest  Contract Missing Miners 
+    - The Witcher 3 Wild Hunt - New Quest  Contract Missing Miners
     - Gato Roboto Soundtrack
     - Gray Skies, Dark Waters Soundtrack & Art Book
     - Girl Kill Zombies - 18+
@@ -13720,31 +13790,31 @@ nlu:
     - DOOMicorn Master Collection Cosmetic Pack
     - Amazing Thailand VR Experience
     - Prison Boss VR
-    - F1 2019 Badge  Metal Bird 
-    - F1 2019 Badge  Fletch 
-    - F1 2019 Badge  Aced 
-    - F1 2019 Badge  Flash 
-    - F1 2019 Badge  Hazard 
-    - F1 2019 Badge  Stomp 
+    - F1 2019 Badge  Metal Bird
+    - F1 2019 Badge  Fletch
+    - F1 2019 Badge  Aced
+    - F1 2019 Badge  Flash
+    - F1 2019 Badge  Hazard
+    - F1 2019 Badge  Stomp
     - Love Fantasy
     - The Red Solstice Armory Pack
     - Antiquitas
     - Airport CEO
-    - F1 2019 Car Livery  KOMPASS - Dot 
-    - F1 2019 Car Livery  Monnaie - Riche 
-    - F1 2019 Suit  Turbo Blue 
-    - F1 2019 Suit  Altitude 
-    - F1 2019 Suit  Jet Stream 
-    - F1 2019 Suit  Mountain Range 
+    - F1 2019 Car Livery  KOMPASS - Dot
+    - F1 2019 Car Livery  Monnaie - Riche
+    - F1 2019 Suit  Turbo Blue
+    - F1 2019 Suit  Altitude
+    - F1 2019 Suit  Jet Stream
+    - F1 2019 Suit  Mountain Range
     - Adventure Bit
-    - F1 2019 Suit  Firestorm 
-    - F1 2019 Suit  Diamonds Edge 
-    - F1 2019 Gloves  Turbo Blue 
-    - F1 2019 Gloves  Altitude 
-    - F1 2019 Gloves  Jet Stream 
-    - F1 2019 Gloves  Mountain Range 
-    - F1 2019 Gloves  Firestorm 
-    - F1 2019 Gloves  Diamonds Edge 
+    - F1 2019 Suit  Firestorm
+    - F1 2019 Suit  Diamonds Edge
+    - F1 2019 Gloves  Turbo Blue
+    - F1 2019 Gloves  Altitude
+    - F1 2019 Gloves  Jet Stream
+    - F1 2019 Gloves  Mountain Range
+    - F1 2019 Gloves  Firestorm
+    - F1 2019 Gloves  Diamonds Edge
     - Stardew Valley
     - Tales of Blood and Sand
     - Star girls - Wallpapers
@@ -18491,15 +18561,15 @@ nlu:
     - Street Fighter X Tekken Street Fighter Boost Gem Pack 2
     - Street Fighter X Tekken Tekken Boost Gem Pack 1
     - TopplePOP Bungee Blockbusters Playtest
-    - Street Fighter X Tekken SF Booster Pack 3 
+    - Street Fighter X Tekken SF Booster Pack 3
     - 7th Sea A Pirate s Pact Demo
-    - Street Fighter X Tekken TK Booster Pack 8 
-    - Street Fighter X Tekken Gems Assist 3 
-    - Street Fighter X Tekken Gems Assist 4 
+    - Street Fighter X Tekken TK Booster Pack 8
+    - Street Fighter X Tekken Gems Assist 3
+    - Street Fighter X Tekken Gems Assist 4
     - Flatline
-    - Street Fighter X Tekken Gems Assist 6 
-    - Street Fighter X Tekken TK Booster Pack 4 
-    - Street Fighter X Tekken Gems Assist 5 
+    - Street Fighter X Tekken Gems Assist 6
+    - Street Fighter X Tekken TK Booster Pack 4
+    - Street Fighter X Tekken Gems Assist 5
     - Fantasy Grounds - Creature Collection Revised (PFRPG)
     - Sanctum Breach Demo
     - Casual Commando
@@ -19077,16 +19147,16 @@ nlu:
     - SC2KRender
     - Magus Over Fool
     - Big Bia Soundtrack
-    - Gotham City Impostors Free to Play Weapon Pack - Starter 
+    - Gotham City Impostors Free to Play Weapon Pack - Starter
     - Masked and Mysterious
-    - Gotham City Impostors Free to Play Weapon Pack - Professional 
-    - Gotham City Impostors Free to Play Weapon Pack - Ultimate 
+    - Gotham City Impostors Free to Play Weapon Pack - Professional
+    - Gotham City Impostors Free to Play Weapon Pack - Ultimate
     - Gravity Panda
-    - Gotham City Impostors Free to Play Support Item Pack - Starter 
-    - Gotham City Impostors Free to Play Support Item Pack - Professional 
-    - Gotham City Impostors Free to Play Support Item Pack - Ultimate 
-    - Gotham City Impostors Free to Play Gadget Pack - Starter 
-    - Gotham City Impostors Free to Play Gadget Pack - Professional 
+    - Gotham City Impostors Free to Play Support Item Pack - Starter
+    - Gotham City Impostors Free to Play Support Item Pack - Professional
+    - Gotham City Impostors Free to Play Support Item Pack - Ultimate
+    - Gotham City Impostors Free to Play Gadget Pack - Starter
+    - Gotham City Impostors Free to Play Gadget Pack - Professional
     - Ascended
     - 皓月空华 - 打赏1$
     - Station Commander
@@ -19094,36 +19164,36 @@ nlu:
     - 皓月空华 - 打赏5$
     - Super Reward 99$
     - Ferris Wheel Simulator
-    - Gotham City Impostors Free to Play Gadget Pack - Ultimate 
-    - Gotham City Impostors Free to Play Character Pack 
-    - Gotham City Impostors Free to Play Personality Pack 
-    - Gotham City Impostors Free to Play Dress-Up Pack 
+    - Gotham City Impostors Free to Play Gadget Pack - Ultimate
+    - Gotham City Impostors Free to Play Character Pack
+    - Gotham City Impostors Free to Play Personality Pack
+    - Gotham City Impostors Free to Play Dress-Up Pack
     - Flying Girls
-    - Gotham City Impostors Free to Play Business Costume 
-    - Gotham City Impostors Free to Play Office Bat 
+    - Gotham City Impostors Free to Play Business Costume
+    - Gotham City Impostors Free to Play Office Bat
     - CRUSH & SQUASH
-    - Gotham City Impostors Free to Play Stitches 
+    - Gotham City Impostors Free to Play Stitches
     - Pleasure PuzzleWorkshop 趣拼拼：拼图工坊
-    - Gotham City Impostors Free to Play Cowboy Costume 
-    - Gotham City Impostors Free to Play Steampunk Costume 
-    - Gotham City Impostors Free to Play Crocky 
+    - Gotham City Impostors Free to Play Cowboy Costume
+    - Gotham City Impostors Free to Play Steampunk Costume
+    - Gotham City Impostors Free to Play Crocky
     - Moorhuhn Kart
-    - Gotham City Impostors Free to Play Harlette 
-    - Gotham City Impostors Free to Play Premium Card Pack 5 
-    - Gotham City Impostors Free to Play Premium Card Pack 2 
+    - Gotham City Impostors Free to Play Harlette
+    - Gotham City Impostors Free to Play Premium Card Pack 5
+    - Gotham City Impostors Free to Play Premium Card Pack 2
     - Galaxity
-    - Gotham City Impostors Free to Play Premium Card Pack 4 
-    - Gotham City Impostors Free to Play Premium Card Pack 6 
+    - Gotham City Impostors Free to Play Premium Card Pack 4
+    - Gotham City Impostors Free to Play Premium Card Pack 6
     - The Abnormal Place
-    - Gotham City Impostors Free to Play Premium Card Pack 3 
+    - Gotham City Impostors Free to Play Premium Card Pack 3
     - Gotham City Impostors Free to Play Professional Impostor Kit
     - TIGER MAGNET LINK KNIFE
-    - Gotham City Impostors Free to Play Costume Coin Boost - Solo 
-    - Gotham City Impostors Free to Play XP Boost - Solo 
-    - Gotham City Impostors Free to Play Mega XP Boost - Solo 
-    - Gotham City Impostors Free to Play XP Boost - Team 
+    - Gotham City Impostors Free to Play Costume Coin Boost - Solo
+    - Gotham City Impostors Free to Play XP Boost - Solo
+    - Gotham City Impostors Free to Play Mega XP Boost - Solo
+    - Gotham City Impostors Free to Play XP Boost - Team
     - Dungeon of Fear Demo
-    - Gotham City Impostors Free to Play Starter Impostor Kit 
+    - Gotham City Impostors Free to Play Starter Impostor Kit
     - Gotham City Impostors Free to Play Ultimate Impostor Kit
     - Twisty Puzzle Simulator
     - Tactical Nexus Chapter 4 -Tactical Star-
@@ -19466,7 +19536,7 @@ nlu:
     - Quanect
     - Magic Sword for Kamonegi-go
     - Fantasy Grounds - 3.5E/PFRPG B21 Shadows of the Deep
-    -  Edna & Harvey Harvey s New Eyes Demo
+    - Edna & Harvey Harvey s New Eyes Demo
     - 大头侏罗纪
     - Apparition
     - Hot And Lovely 2 - patch
@@ -23278,7 +23348,7 @@ nlu:
     - Alien maze
     - One Hell of a Trip
     - Mahjong Gold 2. Pirates Island
-    - Beat Saber LMFAO ft. Lauren Bennett, GoonRock –  Party Rock Anthem 
+    - Beat Saber LMFAO ft. Lauren Bennett, GoonRock –  Party Rock Anthem
     - Tavern Master - Prologue
     - Antonball Deluxe Lite
     - Void Warfare
@@ -23305,7 +23375,7 @@ nlu:
     - A-Spec First Assault
     - Bite Sized Puzzle
     - Wildsilver
-    - Beat Saber Limp Bizkit  –  Rollin’ (Air Raid Vehicle) 
+    - Beat Saber Limp Bizkit  –  Rollin’ (Air Raid Vehicle)
     - デジタルリミテッドパック [サントラ+アートブック] / 数码限定版［原声音轨+插画集］/ Digital LimitedPack [OST + Art Book] / (Touhou Double Focus)
     - SISYPHUS
     - Ascension
@@ -23319,10 +23389,10 @@ nlu:
     - MARSUPILAMI - HOOBADVENTURE
     - RATOMON
     - Afterinfection
-    - Beat Saber The Pussycat Dolls –  Don t Cha 
+    - Beat Saber The Pussycat Dolls –  Don t Cha
     - Broken Robot
-    - Beat Saber Maroon 5 –  Sugar 
-    - Beat Saber Gwen Stefani –  The Sweet Escape ft. Akon 
+    - Beat Saber Maroon 5 –  Sugar
+    - Beat Saber Gwen Stefani –  The Sweet Escape ft. Akon
     - Nemezis Mysterious Journey III Prologue
     - DRUM N BASS MASSACRE
     - Operator - Northridge Park
@@ -23697,77 +23767,3 @@ nlu:
     - Jixxaw Party Time
     - Express Simulator
     - Indies  Lies
-
-    
-
-- intent: get_rate
-  examples: |
-    - Quel est la note de ce jeu?
-    - Le jeu est bien noté
-    - Le jeu est il aimé?
-    - Le jeu le mieux note
-    - C'est quoi la note de ce jeu
-    - note
-    - notation
-    - Quelle est la note de [Skyrim](video_game) ?
-- intent: get_genre
-  examples: |
-    - fps
-    - tps
-    - moba
-    - action
-    - horreur
-    - monde ouvert
-    - solo
-    - multijoueur
-    - Ce jeu est il un fps?
-    - c'est un moba?
-    - on peut jouer à plusieurs?
-- intent: get_graphic
-  examples: |
-    - qualité
-    - qualite
-    - beau
-    - Ce jeu est il beau
-    - beau paysage
-- intent: get_gameplay
-  examples: |
-    - Ce jeu est-il facile à jouer ?
-    - Ce jeu est-il difficile à jouer ?
-    - Est-ce que ce jeu est dur ?
-    - Est-ce que ce jeu est simple ?
-    - Est-il facile de jouer à ce jeu ?
-    - est-il difficile de jouer à ce jeu ?
-    - Les contrôle sont-ils simples ?
-    - Les contrôles sont-ils durs ?
-    - Les contrôles sont-ils faciles ?
-    - Les contrôles sont-ils difficiles ?
-    - Le gameplay est-il bien ?
-    - Le gameplay est-il mauvais ?
-- intent: get_immersion
-  examples: |
-    - Le jeu est-il immersif ?
-    - Le jeu est-il passionnant ?
-    - Le jeu est-il bien fait ?
-    - Peut-on entrer en immersion dans ce jeu ?
-    - Les graphiques sont-ils beaux ?
-    - L'histoire est-elle belle ?
-    - L'histoire est-elle passionnante ?
-    - Les graphiques sont-ils bien faits ?
-    - Vais-je passer peu de temps sur ce jeu ?
-    - Vais-je passer beaucoup de temps sur ce jeu
-- intent: get_review
-  examples: |
-    - Que penses-tu de ce jeu ?
-    - Ce jeu est-il bien ?
-    - Ce jeu est-il mauvais ?
-    - Tu aimes ce jeu ?
-    - Tu n'aimes pas ce jeu ?
-    - T'as kiffé ce jeu ?
-    - T'as détesté ce jeu ?
-    - Qu'est-ce que tu penses de ce jeu ?
-    - Ce jeu est formidable ?
-    - Ce jeu est à chier ?
-    - Ce jeu en vaux la peine ?
-    - Ce jeu est médiocre ?
-    - Ce jeu est nul ?

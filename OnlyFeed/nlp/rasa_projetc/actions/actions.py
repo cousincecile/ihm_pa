@@ -50,7 +50,7 @@ def fetch_price(video_game):
     cur = db.cursor()
     cur.execute("SELECT price FROM steam_video_games WHERE name LIKE '%" + video_game +"%'")
     result = cur.fetchall()
-    return result[0][0]
+    return float(result[0][0]) / 100
 
 # def fetch_rate(video_game):
 

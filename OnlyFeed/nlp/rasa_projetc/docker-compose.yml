@@ -1,0 +1,22 @@
+version: '3.0'
+services:
+  rasa-train:
+    image: rasa/rasa:2.6.3-full
+    user: root
+    volumes:
+      - ./:/app
+    command:
+      - train
+  rasa-run:
+    image: rasa/rasa:2.6.3-full
+    user: root
+    ports:
+      - 5005:5005
+    volumes:
+      - ./:/app
+    command:
+      - run
+  action-server:
+    image: 71d4daa7a6d2
+    ports:
+      - 5055:5055

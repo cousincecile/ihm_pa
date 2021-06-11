@@ -38,7 +38,7 @@ stories:
 - story: get_video_game_immersion
   steps:
   - intent: get_immersion
-  - action: Get_Video_Game_Immerison
+  - action: Get_Video_Game_Immersion
   - action: utter_did_that_help
 
 - story: get_video_game_rate
@@ -77,3 +77,13 @@ stories:
 
 
 
+
+- story: interactive_story_1
+  steps:
+  - intent: get_price
+    entities:
+    - video_game: Jacob Jones and the Bigfoot Mystery  Episode 1
+    - video_game: '1'
+  - slot_was_set:
+    - video_game: '1'
+  - action: Get_Video_Game_Price

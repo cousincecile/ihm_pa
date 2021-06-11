@@ -133,7 +133,6 @@ function display_all_messages(){
 	    	for (var i = 0; i < messages.length; i++){
 	    		display_message(messages[i].content, messages[i].type)
 	    	}
-	    	welcome_message()
 	    },
 	    error: function (data) {
 	        console.log(data.message)
@@ -154,7 +153,6 @@ function query_rasa(message, useriD){
 	    	  }),
 	    success: function (data) {
 	    	for (var i = 0; i < data.length; i++){
-	    		console.log(data[i].text)
 	    		add_message(data[i].text, 0)
 	    	}
 	    },

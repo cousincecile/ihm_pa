@@ -3,8 +3,8 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- get_rate
 - get_price
+- get_rate
 - get_genre
 - get_graphic
 - get_gameplay
@@ -40,6 +40,11 @@ responses:
   utter_iamabot:
   - text: Je ne suis qu'un simple bot.
 actions:
+- Get_Video_Game_Gameplay
+- Get_Video_Game_Genre
+- Get_Video_Game_Graphic
+- Get_Video_Game_Immersion
 - Get_Video_Game_Price
 - Get_Video_Game_Rate
+- Get_Video_Game_Review
 - utter_happy
