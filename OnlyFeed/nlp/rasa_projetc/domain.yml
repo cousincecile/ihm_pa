@@ -41,7 +41,7 @@ responses:
   utter_iamabot:
   - text: Je ne suis qu'un simple bot.
   utter_give_userID:
-  - text: 'Je te conseille le jeu {user_id}'
+  - text: 'Je te conseille le jeu {video_game}'
 actions:
 - Get_Video_Game_Gameplay
 - Get_Video_Game_Genre

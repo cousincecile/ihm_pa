@@ -20,6 +20,6 @@ services:
       - run
   action-server:
     network_mode: host
-    image: 71d4daa7a6d2
+    image: 20714eab3f7d
     ports:
       - 5055:5055

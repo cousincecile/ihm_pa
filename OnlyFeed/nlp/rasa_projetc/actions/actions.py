@@ -54,9 +54,9 @@ class Get_Recommandation(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         user_id = tracker.current_state()["sender_id"]
-        game_id = fetch_recommandation(user_id)
+        video_game = fetch_recommandation(user_id)
 
-        dispatcher.utter_template("utter_give_userID", tracker, user_id=game_id)
+        dispatcher.utter_template("utter_give_userID", tracker, video_game=video_game)
 
         return []
 
@@ -70,6 +70,6 @@ def fetch_price(video_game):
 
 def fetch_recommandation(user_id):
     cur = db.cursor()
-    cur.execute("SELECT game_id FROM of_game_user_evaluation WHERE of_user_id = "+ user_id + " ORDER BY date_create DESC LIMIT 1")
+    cur.execute("SELECT name FROM steam_video_games WHERE id = (SELECT game_id FROM of_game_recommandation a WHERE of_user_id = "+ user_id + " AND a.game_id NOT IN (SELECT game_id FROM of_game_user_evaluation WHERE of_user_id = "+ user_id + ") ORDER BY date_create DESC LIMIT 1)")
     result = cur.fetchall()
     return result[0][0]
