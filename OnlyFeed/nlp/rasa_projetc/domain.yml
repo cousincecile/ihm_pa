@@ -10,6 +10,7 @@ intents:
 - get_gameplay
 - get_immersion
 - get_review
+- get_recommandation
 - greet
 - goodbye
 - affirm
@@ -39,6 +40,8 @@ responses:
   - text: Aurevoir!
   utter_iamabot:
   - text: Je ne suis qu'un simple bot.
+  utter_give_userID:
+  - text: 'Je te conseille le jeu {user_id}'
 actions:
 - Get_Video_Game_Gameplay
 - Get_Video_Game_Genre
@@ -47,4 +50,6 @@ actions:
 - Get_Video_Game_Price
 - Get_Video_Game_Rate
 - Get_Video_Game_Review
+- Get_Recommandation
+- Get_Evaluation
 - utter_happy

@@ -61,6 +61,19 @@ nlu:
     - so so perfect
     - so good
     - so perfect
+- intent: get_recommandation
+  examples: |
+    - Recommande moi un jeu
+    - Quel jeu me conseille-tu
+    - Recommander
+    - Recommandation
+    - Conseiller
+    - Trouve moi un jeu
+    - Trouver
+    - A quoi je peux jouer
+    - Je sais pas à quoi jouer
+    - Je m'ennuie
+    - Ennuyer
 - intent: get_price
   examples: |
     - Quel est le prix de [Assasin's Creed](video_game)

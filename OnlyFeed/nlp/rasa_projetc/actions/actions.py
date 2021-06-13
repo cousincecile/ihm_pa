@@ -44,6 +44,22 @@ class Get_Video_Game_Rate(Action):
 
         return []
 
+class Get_Recommandation(Action):
+
+    def name(self) -> Text:
+        return "Get_Recommandation"
+
+    async def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        user_id = tracker.current_state()["sender_id"]
+        game_id = fetch_recommandation(user_id)
+
+        dispatcher.utter_template("utter_give_userID", tracker, user_id=game_id)
+
+        return []
+
 
 def fetch_price(video_game):
 
@@ -52,21 +68,8 @@ def fetch_price(video_game):
     result = cur.fetchall()
     return float(result[0][0]) / 100
 
-# def fetch_rate(video_game):
-
-#     # cur = db.cursor()
-#     # cur.execute("SELECT rate FROM of_game_analysis WHERE id_game = (SELECT id FROM steam_video_games WHERE name LIKE '%" + video_game +"%' LIMIT 1)")
-#     # result = cur.fetchall()
-#     return "result"
-
-def get_games():
+def fetch_recommandation(user_id):
     cur = db.cursor()
-    cur.execute("SELECT name FROM steam_video_games")
-    results = cur.fetchall()
-
-    with open("games.txt", "a+") as f:
-        for result in results:
-            game = result[0].replace("'", " ")
-            f.write("- \'" + str(game) + "\'\n")
-
-get_games()
+    cur.execute("SELECT game_id FROM of_game_user_evaluation WHERE of_user_id = "+ user_id + " ORDER BY date_create DESC LIMIT 1")
+    result = cur.fetchall()
+    return result[0][0]

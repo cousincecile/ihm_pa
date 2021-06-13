@@ -72,18 +72,8 @@ stories:
   - action: Get_Video_Game_Review
   - action: utter_did_that_help
 
-
-  
-
-
-
-
-- story: interactive_story_1
+- story: get_recommandation
   steps:
-  - intent: get_price
-    entities:
-    - video_game: Jacob Jones and the Bigfoot Mystery  Episode 1
-    - video_game: '1'
-  - slot_was_set:
-    - video_game: '1'
-  - action: Get_Video_Game_Price
+    - intent: get_recommandation
+    - action: Get_Recommandation
+    - action: Get_Evaluation

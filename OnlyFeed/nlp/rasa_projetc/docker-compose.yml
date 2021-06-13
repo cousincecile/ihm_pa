@@ -1,6 +1,7 @@
 version: '3.0'
 services:
   rasa-train:
+    network_mode: host
     image: rasa/rasa:2.6.3-full
     user: root
     volumes:
@@ -8,6 +9,7 @@ services:
     command:
       - train
   rasa-run:
+    network_mode: host
     image: rasa/rasa:2.6.3-full
     user: root
     ports:
@@ -17,6 +19,7 @@ services:
     command:
       - run
   action-server:
+    network_mode: host
     image: 71d4daa7a6d2
     ports:
       - 5055:5055
