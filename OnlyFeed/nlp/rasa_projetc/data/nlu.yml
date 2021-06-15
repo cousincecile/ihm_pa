@@ -169,6 +169,18 @@ nlu:
     - Ce jeu en vaux la peine ?
     - Ce jeu est médiocre ?
     - Ce jeu est nul ?
+- intent: give_game_evaluation
+  examples: |
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    - 10
 - lookup: video_game
   examples: |
     - Crix

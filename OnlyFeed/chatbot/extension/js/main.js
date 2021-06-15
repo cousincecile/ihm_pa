@@ -32,9 +32,9 @@ function get_cookies(){
 }
 
 function set_cookies(data){
-	chrome.cookies.set({ url: url, name: "email", value: String(data.email) });
-	chrome.cookies.set({ url: url, name: "username", value: String(data.username) });
-	chrome.cookies.set({ url: url, name: "userID", value: String(data.id) });
+	chrome.cookies.set({ url: url, name: "email", value: String(data.email), expirationDate: (new Date().getTime()/1000) + 2628000 });
+	chrome.cookies.set({ url: url, name: "username", value: String(data.username), expirationDate: (new Date().getTime()/1000) + 2628000 });
+	chrome.cookies.set({ url: url, name: "userID", value: String(data.id), expirationDate: (new Date().getTime()/1000) + 2628000 });
 
 	document.location.reload();
 }

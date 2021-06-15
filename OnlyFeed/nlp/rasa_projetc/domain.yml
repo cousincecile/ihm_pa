@@ -35,13 +35,16 @@ responses:
   utter_did_that_help:
   - text: Est ce que ca a été utile??
   utter_happy:
-  - text: Génial!
+  - text: Génial! Merci de ta réponse
   utter_goodbye:
-  - text: Aurevoir!
+  - text: Au revoir!
   utter_iamabot:
   - text: Je ne suis qu'un simple bot.
-  utter_give_userID:
+  utter_give_recommandation:
   - text: 'Je te conseille le jeu {video_game}'
+  utter_ask_evaluation:
+  - text: 'Notez cette évaluation entre 1 et 10'
+
 actions:
 - Get_Video_Game_Gameplay
 - Get_Video_Game_Genre
@@ -51,5 +54,6 @@ actions:
 - Get_Video_Game_Rate
 - Get_Video_Game_Review
 - Get_Recommandation
+- utter_ask_evaluation
 - Get_Evaluation
 - utter_happy

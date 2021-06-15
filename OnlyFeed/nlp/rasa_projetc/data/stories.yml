@@ -76,4 +76,6 @@ stories:
   steps:
     - intent: get_recommandation
     - action: Get_Recommandation
+    - action: utter_ask_evaluation
+    - intent: give_game_evaluation
     - action: Get_Evaluation
