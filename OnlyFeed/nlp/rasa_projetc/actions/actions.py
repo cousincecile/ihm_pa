@@ -78,7 +78,6 @@ class Get_Evaluation(Action):
         return []
 
 def fetch_price(video_game):
-
     cur = db.cursor()
     cur.execute("SELECT price FROM steam_video_games WHERE name LIKE '%" + video_game +"%'")
     result = cur.fetchall()
@@ -102,5 +101,6 @@ def save_user_evaluation(game_id, user_id, rate):
 
     try:
         cur.execute("INSERT INTO of_game_user_evaluation(of_user_id, game_id, rate, date_create) VALUES(" + str(user_id) + "," + str(game_id) + "," + str(rate) + ", '" + str(date_create) + "')")
+        db.commit()
     except Exception as e:
         print(e)

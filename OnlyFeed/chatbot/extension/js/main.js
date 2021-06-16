@@ -1,6 +1,7 @@
 var url = 'http://localhost:5001/'
 var url_rasa = 'http://localhost:5005/webhooks/rest/webhook'
 var userID
+var latest_comparison_date = get_last_comparison_date()
 
 document.addEventListener('DOMContentLoaded', function () {
 	document.getElementById("reload_message").addEventListener("click", add_message("from_user", 1));
@@ -18,12 +19,41 @@ input.addEventListener('keydown', function (e) {
 var new_user_button = document.getElementById('new_user_button');
 new_user_button.addEventListener("click", add_user)
 
+function display_comparison_form(message){
+	document.getElementById("send_message").disabled = true
+	document.getElementById("comparison_form").style.display = "block"
+	comparison_form = document.getElementById("comparison_form")
+	
+	console.log(message)
+}
+
+function get_game_comparison(id_user){
+	$.ajax({
+		url: url + 'get_comparison',
+	    type: 'POST',
+	    dataType: 'json',
+	    data: { 
+	    		userID : id_user
+	    	  },
+	    success: function (data) {
+	        if(data.message == 0){
+	        	console.log(data)
+	        	display_all_messages()
+	        }else{
+	        	display_comparison_form(data.message)
+	        }
+	    },
+	    error: function (data) {
+	        console.log(data.message)
+	    }});
+}
+
 function get_cookies(){
 	chrome.cookies.get({ url: url, name: 'userID' },
 		function (cookie) {
 			if (cookie) {
 			  userID = cookie.value
-		      display_all_messages(cookie)
+			  get_game_comparison(userID)
 		    }
 		    else {
 		      display_new_form()
@@ -159,6 +189,10 @@ function query_rasa(message, useriD){
 	    error: function (data) {
 	        console.log(data)
 	    }});
+
+}
+
+function get_last_comparison_date(){
 
 }
 

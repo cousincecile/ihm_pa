@@ -5,17 +5,20 @@ from sqlalchemy.ext.declarative import declarative_base
 from flask_cors import CORS, cross_origin
 import datetime
 import json
+import psycopg2
 
 app = Flask(__name__)
 CORS(app)
 
 POSTGRES = {
-    'user': 'root',
-    'pw': 'root',
+    'user': 'of_dck',
+    'pw': 'gft78kP9!luY!',
     'db': 'onlyfeed',
-    'host': 'localhost',
+    'host': 'onlyfeed.ddns.net',
     'port': '5432',
 }
+
+conn = psycopg2.connect( host=POSTGRES['host'], user=POSTGRES['user'], password=POSTGRES['pw'], dbname=POSTGRES['db'])
 
 app.config['DEBUG'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://%(user)s:\
@@ -46,5 +49,10 @@ def get_user_messages(userID):
 
 	print(messages_list)
 
-#add_user()
-get_user("test")
+def get_latest_comparison_date(id_user):
+	cur = conn.cursor()
+	cur.execute('SELECT date_create FROM of_similarity_test_result WHERE id_user = '+ str(id_user))
+	result = cur.fetchall()
+	return result
+
+get_latest_comparison_date(1)

@@ -631,6 +631,16 @@ body {
   display: none;
 }
 
+.comparison_form{
+  width: 100%;
+  min-width: 400px;
+  min-height: 600px;
+  overflow: hidden;
+  height: 100%;
+  margin: auto;
+  display: none;
+}
+
 .custom_form{
   position: relative;
   margin: auto;

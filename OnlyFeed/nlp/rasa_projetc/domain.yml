@@ -43,7 +43,7 @@ responses:
   utter_give_recommandation:
   - text: 'Je te conseille le jeu {video_game}'
   utter_ask_evaluation:
-  - text: 'Notez cette évaluation entre 1 et 10'
+  - text: 'Notez cette recommandation entre 1 et 10'
 
 actions:
 - Get_Video_Game_Gameplay
