@@ -1,7 +1,7 @@
 var url = 'http://localhost:5001/'
 var url_rasa = 'http://localhost:5005/webhooks/rest/webhook'
 var userID
-var latest_comparison_date = get_last_comparison_date()
+var id_game
 
 document.addEventListener('DOMContentLoaded', function () {
 	document.getElementById("reload_message").addEventListener("click", add_message("from_user", 1));
@@ -16,15 +16,88 @@ input.addEventListener('keydown', function (e) {
     }
 });
 
-var new_user_button = document.getElementById('new_user_button');
+var new_user_button = document.getElementById('new_comparison_form');
 new_user_button.addEventListener("click", add_user)
+
+function add_user_comparison(){
+	var select_value = document.getElementById("select_game").value
+
+	if(select_value == ""){
+		return
+	}
+
+	$.ajax({
+		url: url + 'get_comparison_result',
+	    type: 'POST',
+	    dataType: 'json',
+	    data: { 
+	    		userID : userID,
+	    		gameID : id_game,
+	    		result : select_value
+	    	  },
+	    success: function (data) {
+	    	message = "Merci de ta réponse, je m'améliore grace à toi !"
+	    	type = 0
+	    	add_message(message, type)
+	        document.location.reload();
+	    },
+	    error: function (data) {
+	        console.log(data.message)
+	    }});
+
+
+}
 
 function display_comparison_form(message){
 	document.getElementById("send_message").disabled = true
 	document.getElementById("comparison_form").style.display = "block"
 	comparison_form = document.getElementById("comparison_form")
+	var title = document.createElement("H2")
+	title.classList.add("title_form")
 	
-	console.log(message)
+	
+	for(key in message.test_game) {
+    	var t = document.createTextNode("Lequel de ces jeux se rapprochent le plus de " + message.test_game[key]);
+    	title.appendChild(t)
+    	id_game = key
+	}
+
+	comparison_form.appendChild(title)
+
+	var select = document.createElement("select");
+	select.id = "select_game";
+
+	for (i = 1; i <= 3; i += 1){
+		var name = "game" + i
+		for(key in message[name]) {
+			var option = document.createElement("option");
+			option.value = i - 1
+		    option.text = message[name][key];
+		    select.appendChild(option);
+		}
+	}
+
+	var aucun = document.createElement("option");
+	aucun.value = 3
+	aucun.text = "Aucun";
+	select.appendChild(aucun);
+
+	var unknown = document.createElement("option");
+	unknown.value = 4
+	unknown.text = "Je ne sais pas"
+	select.appendChild(unknown);
+
+	select.classList.add("form-select")
+
+	comparison_form.appendChild(select)
+
+	var submit_button_comparison = document.createElement("button")
+	submit_button_comparison.classList.add("btn")
+	submit_button_comparison.id = "submit_button_comparison"
+	submit_button_comparison.innerHTML = "Envoyer"
+
+	comparison_form.appendChild(submit_button_comparison)
+	submit_button_comparison.addEventListener("click", add_user_comparison)
 }
 
 function get_game_comparison(id_user){
@@ -191,8 +264,3 @@ function query_rasa(message, useriD){
 	    }});
 
 }
-
-function get_last_comparison_date(){
-
-}
-

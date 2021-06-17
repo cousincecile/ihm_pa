@@ -7,7 +7,7 @@ from flask_cors import CORS, cross_origin
 import datetime
 import json
 import psycopg2
-from functions import days_between, get_games_to_compare
+from functions import days_between, get_games_to_compare, save_user_comparison
 
 
 app = Flask(__name__)
@@ -91,7 +91,6 @@ def get_all_messages():
 def get_comparison():
   try:
     id_user = request.form.get('userID')
-    print(str(id_user))
     cur = conn.cursor()
     cur.execute('SELECT date_create FROM of_similarity_test_result WHERE id_user = '+ str(id_user))
     result = cur.fetchall()
@@ -100,7 +99,7 @@ def get_comparison():
     if not result:
       data = {'message': get_games_to_compare(id_user), 'code': 'SUCCESS'}
       return make_response(jsonify(data), 201)
-    elif (days_between(result[0][0], now) >= -5):
+    elif (days_between(result[0][0], now) >= 7):
       data = {'message': get_games_to_compare(id_user), 'code': 'SUCCESS'}
       return make_response(jsonify(data), 201)
     else:
@@ -111,6 +110,19 @@ def get_comparison():
     data = {'message': e, 'code': 'ERROR'}
     return make_response(jsonify(data), 500)
 
+
+@app.route("/get_comparison_result", methods=['POST'])
+def get_comparison_result():
+  id_user = request.form.get('userID')
+  id_game = request.form.get('gameID')
+  result = request.form.get('result')
+
+  if(save_user_comparison(id_user, id_game, result) == 1):
+    data = {'message': "ok", 'code': 'SUCCESS'}
+    return make_response(jsonify(data), 201)
+  else:
+    data = {'message': "ko", 'code': 'ERROR'}
+    return make_response(jsonify(data), 500)
 
 
 @app.route("/index.html")
