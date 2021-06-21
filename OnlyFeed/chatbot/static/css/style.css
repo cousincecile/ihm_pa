@@ -15,10 +15,9 @@ body {
 
 #frame {
   width: 100%;
-  min-width: 200px;
-  max-width: 600px;
+  min-width: 600px;
   height: 92vh;
-  min-height: 300px;
+  min-height: 600px;
   max-height: 720px;
   background: #E6EAEA;
 }
@@ -504,12 +503,15 @@ body {
 @media screen and (max-width: 735px) {
   #frame .content {
     width: 100%;
-    min-width: 300px !important;
+    min-width: 600px !important;
+    min-height: 600px !important;
   }
 }
 @media screen and (min-width: 900px) {
   #frame .content {
     width: 100%;
+    min-width: 600px !important;
+    min-height: 600px !important;
   }
 }
 #frame .content .contact-profile {

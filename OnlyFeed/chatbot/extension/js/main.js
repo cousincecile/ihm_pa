@@ -2,6 +2,7 @@ var url = 'http://localhost:5001/'
 var url_rasa = 'http://localhost:5005/webhooks/rest/webhook'
 var userID
 var id_game
+var latest_chatbot_message = 0
 
 document.addEventListener('DOMContentLoaded', function () {
 	document.getElementById("reload_message").addEventListener("click", add_message("from_user", 1));
@@ -110,7 +111,6 @@ function get_game_comparison(id_user){
 	    	  },
 	    success: function (data) {
 	        if(data.message == 0){
-	        	console.log(data)
 	        	display_all_messages()
 	        }else{
 	        	display_comparison_form(data.message)
@@ -151,6 +151,11 @@ function display_message(message, type) {
 	var get_messages = document.getElementById("messages");
 
 	if(message != ''){
+
+		if(message.localeCompare("Entrez une note entre 1 et 10", 'fr', { sensitivity: 'base' }) == 0 && type == 1){
+			latest_chatbot_message = 1
+		}
+
 		var entry = document.createElement('li');
 		if(type == 1){
 			entry.classList.add("sent");
@@ -189,13 +194,18 @@ function add_user(){
 	    }});
 }
 
-function add_message(message, type){
+function add_message(message, type, check_answer = 0){
+
+	if(check_answer == 1){
+		latest_chatbot_message = 1
+	}
 
 	if(message == "from_user"){
 		message = document.getElementById("send_message").value;
 	}
 
 	if(message != ""){
+		
 		$.ajax({
 		url: url + 'add_user_message',
 	    type: 'POST',
@@ -206,7 +216,7 @@ function add_message(message, type){
 	    		type : type
 	    	  },
 	    success: function (data) {
-	    	if(type == 1){
+	    	if(type == 1 && latest_chatbot_message == 0){
 	    		query_rasa(message)
 	    	}
 	        display_message(message, type)
@@ -214,6 +224,26 @@ function add_message(message, type){
 	    error: function (data) {
 	        console.log(data.message)
 	    }});
+
+
+		if(latest_chatbot_message == 1 && type == 1){
+			latest_chatbot_message = 0
+			if(isNaN(message)){
+				add_message("Entrez une note entre 1 et 10", 0, 1)
+			}
+
+			else{
+				console.log(parseInt(message))
+			 	if(parseInt(message) < 1){
+					add_message("Entrez une note entre 1 et 10", 0, 1)
+				}
+
+				if(parseInt(message) > 10){
+					add_message("Entrez une note entre 1 et 10", 0, 1)
+				}
+			}
+
+		}
 	}
 }
 
@@ -244,8 +274,6 @@ function display_all_messages(){
 
 function query_rasa(message, useriD){
 
-	console.log(message)
-
 	$.ajax({
 		url: url_rasa,
 	    type: 'POST',
@@ -256,6 +284,9 @@ function query_rasa(message, useriD){
 	    	  }),
 	    success: function (data) {
 	    	for (var i = 0; i < data.length; i++){
+	    		if(data[i].text.localeCompare("Notez cette recommandation entre 1 et 10", 'fr', { sensitivity: 'base' }) == 0){
+	    			latest_chatbot_message = 1
+	    		}
 	    		add_message(data[i].text, 0)
 	    	}
 	    },
