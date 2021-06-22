@@ -20,8 +20,11 @@ intents:
 - mood_unhappy
 - bot_challenge
 - get_latest_game
+- get_requirements
+- thank
 entities:
 - video_game
+- os
 slots:
   video_game:
     type: text
@@ -60,9 +63,25 @@ communauté : {extern}'
   utter_ask_evaluation:
   - text: 'Notez cette recommandation entre 1 et 10'
   utter_not_found:
-  - text: "Désolé je n'ai pas trouvé ce jeu"
+  - text: "Désolé je n'ai pas trouvé ce que tu cherches"
   utter_give_latest_game:
   - text: "Voici notre dernière sortie Steam : {latest_game}"
+  utter_give_requirements:
+  - text: "Voici les specs de {video_game} : 
+    <br />
+    <br />
+    Linux : {linux_ok} <br />
+    Windows : {windows_ok} <br />
+    Mac : {mac_ok}
+    <br />
+    Requirements : <br />
+    <br />
+    Linux : {linux_requirements} <br >
+    Windows : {windows_requirements} <br >
+    Mac : {mac_requirements}
+  "
+  utter_thanks:
+  - text: "Ravi de t'avoir aidé ;)"
 
 actions:
 - Get_Video_Game_Price
@@ -73,3 +92,5 @@ actions:
 - Get_Latest_Game
 - utter_happy
 - utter_give_rate
+- Get_Requirements
+- utter_thanks

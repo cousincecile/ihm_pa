@@ -61,6 +61,14 @@ nlu:
     - so so perfect
     - so good
     - so perfect
+- intent: thank
+  examples: |
+    - Merci
+    - Je te remercie
+    - c'est sympa
+    - ça m'a aidé
+    - aide
+    - Merci d'avoir répondu
 - intent: get_recommandation
   examples: |
     - Recommande moi un jeu
@@ -120,6 +128,16 @@ nlu:
     - dernière sortie
     - dernier
     - derniere
+- intent: get_requirements
+  examples: |
+    - Quelles sont les specs
+    - Linux
+    - Windows
+    - Mac
+    - Je peux jouer à ce jeu sur Linux ?
+    - Je peux jouer à ce jeu sur Mac ?
+    - Je peux jouer à ce jeu sur Windows ?
+    - specificité
 - intent: give_game_evaluation
   examples: |
     - 1

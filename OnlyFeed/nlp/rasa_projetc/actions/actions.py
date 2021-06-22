@@ -54,7 +54,6 @@ class Get_Video_Game_Rate(Action):
             dispatcher.utter_template("utter_not_found", tracker)
         else:
             video_game = video_game.lower()
-            print(video_game)
             rate = fetch_rate(video_game)
             if(not rate):
                 dispatcher.utter_template("utter_not_found", tracker)
@@ -91,6 +90,41 @@ class Get_Latest_Game(Action):
 
         latest_game = get_latest_game()
         dispatcher.utter_template("utter_give_latest_game", tracker, latest_game = latest_game)
+
+        return []
+
+class Get_Requirements(Action):
+
+    def name(self) -> Text:
+        return "Get_Requirements"
+
+    async def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        video_game = tracker.get_slot("video_game")
+        
+        if(not video_game):
+            dispatcher.utter_template("utter_not_found", tracker)
+        else:
+            video_game = video_game.lower()
+            requirements = get_requirements(video_game)
+            if(not requirements[0][5]):
+                dispatcher.utter_template("utter_not_found", tracker)
+            else:
+                if(requirements[0][0]):
+                    mac_ok = "Oui"
+                else:
+                    mac_ok = "Non"
+                if(requirements[0][1]):
+                    linux_ok = "Oui"
+                else:
+                    linux_ok = "Non"
+                if(requirements[0][2]):
+                    windows_ok = "Oui"
+                else:
+                    windows_ok = "Non"
+                dispatcher.utter_template("utter_give_requirements", tracker, linux_ok = linux_ok, mac_ok = mac_ok, windows_ok = windows_ok, mac_requirements = requirements[0][3], linux_requirements = requirements[0][4], windows_requirements = requirements[0][5])
 
         return []
 
@@ -152,3 +186,9 @@ def get_latest_game():
     cur.execute("SELECT name FROM steam_video_games WHERE id IN (SELECT DISTINCT(id_game) FROM of_game_analysis) order by release_date DESC LIMIT 1")
     result = cur.fetchall()
     return result[0][0]
+
+def get_requirements(video_game):
+    cur = db.cursor()
+    cur.execute("SELECT mac, linux, windows, mac_requirements, linux_requirements, windows_requirements FROM steam_video_games WHERE LOWER(name) LIKE '%"+ video_game +"%'")
+    result = cur.fetchall()
+    return result

@@ -29,17 +29,25 @@ stories:
   - intent: deny
   - action: utter_goodbye
 
+- story: thank_message
+  steps:
+  - intent: thank
+  - action: utter_thanks
+
+- story: Get_Requirements
+  steps:
+    - intent: get_requirements
+    - action: Get_Requirements
+
 - story: get_video_game_price
   steps:
   - intent: get_price
   - action: Get_Video_Game_Price
-  - action: utter_did_that_help
 
 - story: get_video_game_rate
   steps:
   - intent: get_rate
   - action: Get_Video_Game_Rate
-  - action: utter_did_that_help
 
 - story: get_recommandation
   steps:
