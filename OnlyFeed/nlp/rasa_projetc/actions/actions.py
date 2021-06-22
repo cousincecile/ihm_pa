@@ -25,9 +25,17 @@ class Get_Video_Game_Price(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         video_game = tracker.get_slot("video_game")
-        print(video_game)
-        price = fetch_price(video_game)
-        dispatcher.utter_template("utter_give_price", tracker, price=price, video_game=video_game)
+
+        if(not video_game):
+            dispatcher.utter_template("utter_not_found", tracker)
+        else:
+            video_game = video_game.lower()
+            price = fetch_price(video_game)
+            if(not price):
+                dispatcher.utter_template("utter_not_found", tracker)
+            else:
+                price = price[0][0] / 100
+                dispatcher.utter_template("utter_give_price", tracker, price=price, video_game=video_game)
 
         return []
 
@@ -39,6 +47,19 @@ class Get_Video_Game_Rate(Action):
     async def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        video_game = tracker.get_slot("video_game")
+
+        if(not video_game):
+            dispatcher.utter_template("utter_not_found", tracker)
+        else:
+            video_game = video_game.lower()
+            print(video_game)
+            rate = fetch_rate(video_game)
+            if(not rate):
+                dispatcher.utter_template("utter_not_found", tracker)
+            else:
+                dispatcher.utter_template("utter_give_rate", tracker, graphic = rate[0][0], gameplay = rate[0][1], lifetime = rate[0][2], immersion = rate[0][3], extern = rate[0][4])
 
         return []
 
@@ -78,10 +99,11 @@ class Get_Evaluation(Action):
         return []
 
 def fetch_price(video_game):
+    print(video_game)
     cur = db.cursor()
-    cur.execute("SELECT price FROM steam_video_games WHERE name LIKE '%" + video_game +"%'")
+    cur.execute("SELECT price FROM steam_video_games WHERE LOWER(name) LIKE LOWER('%" + video_game +"%')")
     result = cur.fetchall()
-    return float(result[0][0]) / 100
+    return result
 
 def fetch_recommandation(user_id):
     cur = db.cursor()
@@ -104,3 +126,10 @@ def save_user_evaluation(game_id, user_id, rate):
         db.commit()
     except Exception as e:
         print(e)
+
+def fetch_rate(video_game):
+    print(video_game)
+    cur = db.cursor()
+    cur.execute("SELECT graphic, gameplay, lifetime, immersion, extern FROM of_game_analysis WHERE id_game = (SELECT id FROM steam_video_games WHERE LOWER(name) LIKE LOWER('%" + video_game +"%') LIMIT 1) ORDER BY date_maj DESC LIMIT 1")
+    result = cur.fetchall()
+    return result

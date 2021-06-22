@@ -11,6 +11,7 @@ intents:
 - get_immersion
 - get_review
 - get_recommandation
+- give_game_evaluation
 - greet
 - goodbye
 - affirm
@@ -27,6 +28,19 @@ slots:
 responses:
   utter_give_price:
   - text: 'Le prix de {video_game} est : {price} €'
+  utter_give_rate:
+  - text: 'Voici les notes de {video_game} :
+<br />
+<br />
+graphiques : {graphic}
+<br />
+gameplay : {gameplay}
+<br />
+durée de vie : {lifetime}
+<br />
+immersion : {immersion}
+<br />
+communauté : {extern}'
   utter_greet:
   - text: Bonjour, comment vas-tu?
   utter_cheer_up:
@@ -44,16 +58,14 @@ responses:
   - text: 'Je te conseille le jeu {video_game}'
   utter_ask_evaluation:
   - text: 'Notez cette recommandation entre 1 et 10'
+  utter_not_found:
+  - text: "Désolé je n'ai pas trouvé ce jeu"
 
 actions:
-- Get_Video_Game_Gameplay
-- Get_Video_Game_Genre
-- Get_Video_Game_Graphic
-- Get_Video_Game_Immersion
 - Get_Video_Game_Price
 - Get_Video_Game_Rate
-- Get_Video_Game_Review
 - Get_Recommandation
 - utter_ask_evaluation
 - Get_Evaluation
 - utter_happy
+- utter_give_rate
