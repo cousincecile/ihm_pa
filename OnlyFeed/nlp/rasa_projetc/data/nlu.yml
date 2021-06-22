@@ -108,6 +108,18 @@ nlu:
     - notation
     - Quelle est la note de [Skyrim](video_game) ?
     - bonne note
+- intent: get_latest_game
+  examples: |
+    - Jeu le plus récent
+    - recent
+    - récemment
+    - recemment
+    - il y a pas longtemps
+    - longtemps
+    - dernier jeu
+    - dernière sortie
+    - dernier
+    - derniere
 - intent: give_game_evaluation
   examples: |
     - 1

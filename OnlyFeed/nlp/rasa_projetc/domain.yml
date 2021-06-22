@@ -19,6 +19,7 @@ intents:
 - mood_great
 - mood_unhappy
 - bot_challenge
+- get_latest_game
 entities:
 - video_game
 slots:
@@ -60,6 +61,8 @@ communauté : {extern}'
   - text: 'Notez cette recommandation entre 1 et 10'
   utter_not_found:
   - text: "Désolé je n'ai pas trouvé ce jeu"
+  utter_give_latest_game:
+  - text: "Voici notre dernière sortie Steam : {latest_game}"
 
 actions:
 - Get_Video_Game_Price
@@ -67,5 +70,6 @@ actions:
 - Get_Recommandation
 - utter_ask_evaluation
 - Get_Evaluation
+- Get_Latest_Game
 - utter_happy
 - utter_give_rate

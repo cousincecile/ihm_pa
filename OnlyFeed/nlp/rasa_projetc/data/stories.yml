@@ -48,3 +48,8 @@ stories:
     - action: utter_ask_evaluation
     - intent: give_game_evaluation
     - action: Get_Evaluation
+
+- story: get_latest_game
+  steps:
+    - intent: get_latest_game
+    - action: Get_Latest_Game

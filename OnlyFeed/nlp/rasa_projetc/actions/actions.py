@@ -80,6 +80,20 @@ class Get_Recommandation(Action):
         return []
 
 
+class Get_Latest_Game(Action):
+
+    def name(self) -> Text:
+        return "Get_Latest_Game"
+
+    async def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        latest_game = get_latest_game()
+        dispatcher.utter_template("utter_give_latest_game", tracker, latest_game = latest_game)
+
+        return []
+
 class Get_Evaluation(Action):
 
     def name(self) -> Text:
@@ -128,8 +142,13 @@ def save_user_evaluation(game_id, user_id, rate):
         print(e)
 
 def fetch_rate(video_game):
-    print(video_game)
     cur = db.cursor()
     cur.execute("SELECT graphic, gameplay, lifetime, immersion, extern FROM of_game_analysis WHERE id_game = (SELECT id FROM steam_video_games WHERE LOWER(name) LIKE LOWER('%" + video_game +"%') LIMIT 1) ORDER BY date_maj DESC LIMIT 1")
     result = cur.fetchall()
     return result
+
+def get_latest_game():
+    cur = db.cursor()
+    cur.execute("SELECT name FROM steam_video_games WHERE id IN (SELECT DISTINCT(id_game) FROM of_game_analysis) order by release_date DESC LIMIT 1")
+    result = cur.fetchall()
+    return result[0][0]
