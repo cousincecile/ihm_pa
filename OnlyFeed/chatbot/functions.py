@@ -1,13 +1,6 @@
 import datetime
 import psycopg2
-
-POSTGRES = {
-    'user': 'of_dck',
-    'pw': 'gft78kP9!luY!',
-    'db': 'onlyfeed',
-    'host': 'onlyfeed.ddns.net',
-    'port': '5432',
-}
+from config import POSTGRES
 
 conn = psycopg2.connect( host=POSTGRES['host'], user=POSTGRES['user'], password=POSTGRES['pw'], dbname=POSTGRES['db'])
 

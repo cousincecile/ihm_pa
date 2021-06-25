@@ -22,6 +22,8 @@ intents:
 - get_latest_game
 - get_requirements
 - thank
+- get_minimum_age
+- get_latest_review
 entities:
 - video_game
 - os
@@ -74,6 +76,7 @@ communauté : {extern}'
     Windows : {windows_ok} <br />
     Mac : {mac_ok}
     <br />
+    <br />
     Requirements : <br />
     <br />
     Linux : {linux_requirements} <br >
@@ -82,6 +85,12 @@ communauté : {extern}'
   "
   utter_thanks:
   - text: "Ravi de t'avoir aidé ;)"
+  utter_give_minimum_age:
+  - text: "Tu dois avoir au moins {age} ans pour jouer à {video_game}"
+  utter_give_latest_review:
+  - text: "Voici le dernier commentaire de {video_game} : 
+  <br />
+  {latest_review}"
 
 actions:
 - Get_Video_Game_Price
@@ -94,3 +103,5 @@ actions:
 - utter_give_rate
 - Get_Requirements
 - utter_thanks
+- Get_Minimum_Age
+- Get_Latest_Review

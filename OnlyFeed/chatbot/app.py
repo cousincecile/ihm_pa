@@ -8,19 +8,12 @@ import datetime
 import json
 import psycopg2
 from functions import days_between, get_games_to_compare, save_user_comparison
+from config import POSTGRES
 
 
 app = Flask(__name__)
 CORS(app)
 Bootstrap(app)
-
-POSTGRES = {
-    'user': 'of_dck',
-    'pw': 'gft78kP9!luY!',
-    'db': 'onlyfeed',
-    'host': 'onlyfeed.ddns.net',
-    'port': '5432',
-}
 
 app.config['DEBUG'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://%(user)s:\

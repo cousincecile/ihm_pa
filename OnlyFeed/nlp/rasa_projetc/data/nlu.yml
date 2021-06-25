@@ -82,6 +82,13 @@ nlu:
     - Je sais pas à quoi jouer
     - Je m'ennuie
     - Ennuyer
+- intent: get_minimum_age
+  examples: |
+    - Quel âge il faut avoir pour jouer à ce jeu ?
+    - age pour ce jeu
+    - age minimum pour jouer à jeu ?
+    - L'age pour jouer
+    - Quel est l'age minimum pour jouer à jeu ?
 - intent: get_price
   examples: |
     - Quel est le prix de [Assasin's Creed](video_game)
@@ -150,6 +157,14 @@ nlu:
     - 8
     - 9
     - 10
+- intent: get_latest_review
+  examples: |
+    - Quel est le dernier commentaire de ce jeu
+    - Donne moi le dernier commentaire de ce jeu
+    - commentaire
+    - commentaires
+    - remarque
+    - Quels sont les commentaires ?
 - lookup: video_game
   examples: |
     - Crix

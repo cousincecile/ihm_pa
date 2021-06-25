@@ -146,8 +146,55 @@ class Get_Evaluation(Action):
 
         return []
 
+class Get_Minimum_Age(Action):
+
+    def name(self) -> Text:
+        return "Get_Minimum_Age"
+
+    async def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        video_game = tracker.get_slot("video_game")
+        
+        if(not video_game):
+            dispatcher.utter_template("utter_not_found", tracker)
+        else:
+            video_game = video_game.lower()
+            age = get_minimum_age(video_game)
+
+            if(age[0][0] is None):
+                dispatcher.utter_template("utter_not_found", tracker)
+            else:
+                dispatcher.utter_template("utter_give_minimum_age", tracker, age = age[0][0], video_game = video_game)
+
+        return []
+
+class Get_Latest_Review(Action):
+
+    def name(self) -> Text:
+        return "Get_Latest_Review"
+
+    async def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        video_game = tracker.get_slot("video_game")
+        
+        if(not video_game):
+            dispatcher.utter_template("utter_not_found", tracker)
+        else:
+            video_game = video_game.lower()
+            latest_review = get_latest_review(video_game)
+
+            if(not latest_review[0][0]):
+                dispatcher.utter_template("utter_not_found", tracker)
+            else:
+                dispatcher.utter_template("utter_give_latest_review", tracker, latest_review = latest_review[0][0], video_game = video_game)
+
+        return []
+
 def fetch_price(video_game):
-    print(video_game)
     cur = db.cursor()
     cur.execute("SELECT price FROM steam_video_games WHERE LOWER(name) LIKE LOWER('%" + video_game +"%')")
     result = cur.fetchall()
@@ -192,3 +239,17 @@ def get_requirements(video_game):
     cur.execute("SELECT mac, linux, windows, mac_requirements, linux_requirements, windows_requirements FROM steam_video_games WHERE LOWER(name) LIKE '%"+ video_game +"%'")
     result = cur.fetchall()
     return result
+
+def get_minimum_age(video_game):
+    cur = db.cursor()
+    cur.execute("SELECT age FROM steam_video_games WHERE LOWER(name) LIKE '%"+ video_game +"%'")
+    result = cur.fetchall()
+    return result
+
+def get_latest_review(video_game):
+    cur = db.cursor()
+    cur.execute("SELECT review FROM steam_game_reviews WHERE game_id = (SELECT id FROM steam_video_games WHERE LOWER(name) LIKE '%"+ video_game +"%' LIMIT 1) ORDER BY date_create LIMIT 1")
+    result = cur.fetchall()
+    return result
+
+print(get_latest_review("skyrim"))

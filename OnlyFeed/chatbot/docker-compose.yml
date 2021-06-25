@@ -1,0 +1,7 @@
+version: '2'
+services:
+    webserver:
+        network_mode: host
+        volumes:
+            - .:/code
+        image: webserver

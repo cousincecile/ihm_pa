@@ -2,33 +2,6 @@ version: "2.0"
 
 stories:
 
-- story: happy path
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
-
-- story: sad path 1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
-
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye
-
 - story: thank_message
   steps:
   - intent: thank
@@ -61,3 +34,13 @@ stories:
   steps:
     - intent: get_latest_game
     - action: Get_Latest_Game
+
+- story: get_minimum_age
+  steps:
+    - intent: get_minimum_age
+    - action: Get_Minimum_Age
+
+- story: get_latest_review
+  steps:
+    - intent: get_latest_review
+    - action: Get_Latest_Review

@@ -1,4 +1,4 @@
-var url = 'http://localhost:5001/'
+var url = 'http://localhost:5000/'
 var url_rasa = 'http://localhost:5005/webhooks/rest/webhook'
 var userID
 var id_game
