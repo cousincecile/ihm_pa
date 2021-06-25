@@ -84,10 +84,19 @@ def get_all_messages():
 def get_comparison():
   try:
     id_user = request.form.get('userID')
+    test = request.form.get('test')
+    print("test : " + str(test))
+    print
+
     cur = conn.cursor()
     cur.execute('SELECT date_create FROM of_similarity_test_result WHERE id_user = '+ str(id_user))
     result = cur.fetchall()
     now = datetime.datetime.now()
+
+    if(int(test) == 1):
+      data = {'message': get_games_to_compare(id_user), 'code': 'SUCCESS'}
+      print(data)
+      return make_response(jsonify(data), 201)
 
     if not result:
       data = {'message': get_games_to_compare(id_user), 'code': 'SUCCESS'}

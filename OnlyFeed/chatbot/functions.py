@@ -5,8 +5,6 @@ from config import POSTGRES
 conn = psycopg2.connect( host=POSTGRES['host'], user=POSTGRES['user'], password=POSTGRES['pw'], dbname=POSTGRES['db'])
 
 def days_between(d1, d2):
-    print(d1)
-    print(abs((d2 - d1).days))
     return abs((d2 - d1).days)
 
 def get_games_to_compare(id_user):
@@ -16,7 +14,6 @@ def get_games_to_compare(id_user):
     result = cur.fetchall()
 
     for i in range(4):
-        print(i)
         cur.execute('SELECT name FROM steam_video_games WHERE id = ' + str(result[0][i]))
         game_name = cur.fetchall()
         if i == 0:

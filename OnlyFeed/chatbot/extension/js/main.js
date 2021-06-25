@@ -1,4 +1,4 @@
-var url = 'http://localhost:5000/'
+var url = 'http://localhost:5001/'
 var url_rasa = 'http://localhost:5005/webhooks/rest/webhook'
 var userID
 var id_game
@@ -50,6 +50,7 @@ function add_user_comparison(){
 }
 
 function display_comparison_form(message){
+	document.getElementById("messages").style.display = "none"
 	document.getElementById("send_message").disabled = true
 	document.getElementById("comparison_form").style.display = "block"
 	comparison_form = document.getElementById("comparison_form")
@@ -101,13 +102,14 @@ function display_comparison_form(message){
 	submit_button_comparison.addEventListener("click", add_user_comparison)
 }
 
-function get_game_comparison(id_user){
+function get_game_comparison(id_user, test = 0){
 	$.ajax({
 		url: url + 'get_comparison',
 	    type: 'POST',
 	    dataType: 'json',
 	    data: { 
-	    		userID : id_user
+	    		userID : id_user,
+	    		test : test
 	    	  },
 	    success: function (data) {
 	        if(data.message == 0){
@@ -202,6 +204,10 @@ function add_message(message, type, check_answer = 0){
 
 	if(message == "from_user"){
 		message = document.getElementById("send_message").value;
+		if(message.localeCompare("simi", 'fr', { sensitivity: 'base' }) == 0){
+			get_game_comparison(userID, 1)
+			return
+		}
 	}
 
 	if(message != ""){
