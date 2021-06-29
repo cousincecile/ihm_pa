@@ -1,5 +1,5 @@
-var url = 'http://localhost:5001/'
-var url_rasa = 'http://localhost:5005/webhooks/rest/webhook'
+var url = 'http://rasa.ddns.net:5000/'
+var url_rasa = 'http://rasa.ddns.net:5005/webhooks/rest/webhook'
 var userID
 var id_game
 var latest_chatbot_message = 0
@@ -17,10 +17,11 @@ input.addEventListener('keydown', function (e) {
     }
 });
 
-var new_user_button = document.getElementById('new_comparison_form');
+var new_user_button = document.getElementById('new_user_button');
 new_user_button.addEventListener("click", add_user)
 
 function add_user_comparison(){
+
 	var select_value = document.getElementById("select_game").value
 
 	if(select_value == ""){
@@ -124,6 +125,7 @@ function get_game_comparison(id_user, test = 0){
 }
 
 function get_cookies(){
+	console.log("check cookies")
 	chrome.cookies.get({ url: url, name: 'userID' },
 		function (cookie) {
 			if (cookie) {
@@ -175,6 +177,9 @@ function display_message(message, type) {
 }
 
 function add_user(){
+
+	console.log("add_user")
+
 	var email = document.getElementById("email").value
 	var username = document.getElementById("username").value
 	var age = document.getElementById("age").value
