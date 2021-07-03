@@ -125,7 +125,6 @@ function get_game_comparison(id_user, test = 0){
 }
 
 function get_cookies(){
-	console.log("check cookies")
 	chrome.cookies.get({ url: url, name: 'userID' },
 		function (cookie) {
 			if (cookie) {

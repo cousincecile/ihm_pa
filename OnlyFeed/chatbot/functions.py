@@ -5,6 +5,7 @@ from config import POSTGRES
 conn = psycopg2.connect( host=POSTGRES['host'], user=POSTGRES['user'], password=POSTGRES['pw'], dbname=POSTGRES['db'])
 
 def days_between(d1, d2):
+    print((d2 - d1).days)
     return abs((d2 - d1).days)
 
 def get_games_to_compare(id_user):

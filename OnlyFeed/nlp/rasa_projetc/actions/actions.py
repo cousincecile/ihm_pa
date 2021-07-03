@@ -74,6 +74,10 @@ class Get_Recommandation(Action):
         user_id = tracker.current_state()["sender_id"]
         video_game = fetch_recommandation(user_id)
 
+        if(not video_game):
+            dispatcher.utter_template("utter_not_found", tracker)
+            return []
+
         dispatcher.utter_template("utter_give_recommandation", tracker, video_game=video_game)
 
         return []

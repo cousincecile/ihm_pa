@@ -85,11 +85,10 @@ def get_comparison():
   try:
     id_user = request.form.get('userID')
     test = request.form.get('test')
-    print("test : " + str(test))
-    print
+    print(test)
 
     cur = conn.cursor()
-    cur.execute('SELECT date_create FROM of_similarity_test_result WHERE id_user = '+ str(id_user))
+    cur.execute('SELECT date_create FROM of_similarity_test_result WHERE id_user = '+ str(id_user) + ' ORDER BY date_create DESC LIMIT 1')
     result = cur.fetchall()
     now = datetime.datetime.now()
 
@@ -99,9 +98,11 @@ def get_comparison():
       return make_response(jsonify(data), 201)
 
     if not result:
+      print("pas de rsult ?")
       data = {'message': get_games_to_compare(id_user), 'code': 'SUCCESS'}
       return make_response(jsonify(data), 201)
     elif (days_between(result[0][0], now) >= 7):
+      print("test trop vieux ?")
       data = {'message': get_games_to_compare(id_user), 'code': 'SUCCESS'}
       return make_response(jsonify(data), 201)
     else:
